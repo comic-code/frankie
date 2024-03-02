@@ -1,4 +1,5 @@
 const { Client: NotionClient} = require("@notionhq/client");
+const { gameSearch } = require("../services/tgdb");
 
 const notion = new NotionClient({ auth: process.env.NOTION_TOKEN });
 
@@ -15,8 +16,6 @@ module.exports = {
       const { name, genres, rating, done, poster, release, notes, done_date} = game.properties;
       const posterURL = poster.files[0] ? poster.files[0].external.url : null;
 
-      console.log(done_date);
-
       return {
         id: game.id,
         name: name.title[0].text.content,
@@ -31,4 +30,10 @@ module.exports = {
     })
     res.json(games)
   },
+
+  async search(req, res) {
+    const { q } = req.query;
+    const searchResult = await gameSearch(q);
+    res.json(searchResult);
+  }
 }

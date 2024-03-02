@@ -8,6 +8,7 @@ const GamesController = require('./controllers/GamesController');
 const routes = Router();
   
 routes.get('/games', GamesController.get);
+routes.get('/games/search', GamesController.search);
 
 // routes.get('/movies', MoviesController.get);
 // routes.get('/movies/search', MoviesController.search);
@@ -20,7 +21,6 @@ routes.get('/games', GamesController.get);
 // routes.get('/series/genres', SeriesController.getGenres);
 // routes.post('/series', SeriesController.post);
 
-// routes.get('/games/search', GamesController.search);
 // routes.get('/games/screenshots', GamesController.getGameScreenshots);
 // routes.get('/games/genres', GamesController.getGenres);
 // routes.post('/games', GamesController.post);
