@@ -9,10 +9,12 @@ const routes = Router();
   
 routes.get('/games', GamesController.get);
 routes.get('/games/search', GamesController.search);
+routes.post('/games', GamesController.post);
 
+// routes.get('/movies/genres', MoviesController.getGenres);
 // routes.get('/movies', MoviesController.get);
 // routes.get('/movies/search', MoviesController.search);
-// routes.get('/movies/genres', MoviesController.getGenres);
+// routes.get('/games/genres', GamesController.getGenres);
 // routes.post('/movies', MoviesController.post);
 // routes.put('/movies', MoviesController.put);
 
@@ -22,8 +24,6 @@ routes.get('/games/search', GamesController.search);
 // routes.post('/series', SeriesController.post);
 
 // routes.get('/games/screenshots', GamesController.getGameScreenshots);
-// routes.get('/games/genres', GamesController.getGenres);
-// routes.post('/games', GamesController.post);
 
 // routes.get('/alexa/say', AlexaController.say);
 // routes.get('/alexa/make', AlexaController.make);

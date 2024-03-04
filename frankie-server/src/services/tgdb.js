@@ -1,6 +1,21 @@
 require("dotenv").config();
 const igdb = require("igdb-api-node").default;
 const axios = require("axios").default;
+const { getGenres, getPlatforms } = require("./tgdb-utils");
+
+let platforms;
+let genres;
+
+async function gamePlatforms() {
+  return platforms || await getPlatforms();
+}
+
+async function gameGenres() {
+  return genres || await getGenres();
+}
+
+gamePlatforms().then(result => platforms = result);
+gameGenres().then(result => genres = result);
 
 module.exports = {
   async gameSearch(gameForSearch) {
@@ -58,7 +73,8 @@ module.exports = {
   
             resolve({
               ...result,
-              cover: covers.data[0].url.replace(
+              genres: result.genres ? result.genres.map(genre => genres.find(el => el.id === genre)) : [],
+              poster: covers.data[0].url.replace(
                 "t_thumb",
                 "t_cover_big"
               ),
@@ -71,5 +87,6 @@ module.exports = {
   
       return Promise.all(promises).then((result) => result);
     });
-  }
+  },
+
 }

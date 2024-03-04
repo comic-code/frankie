@@ -11,5 +11,5 @@ app.use(express.json());
 app.use(routes);
 
 app.listen(PORT, () => {
-  console.log(`🚀: ${PORT}`);
+  console.log(`✅: Port - ${PORT}`);
 });
