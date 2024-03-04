@@ -4,7 +4,7 @@ export default function CheckBlock({checked, setChecked, label}) {
   return (
     <CheckBlockWrapper>
       <input type="checkbox" id={label} checked={checked} onChange={setChecked}/>
-      <label for={label} data-content={label}>{label}</label>
+      <label htmlFor={label} data-content={label}>{label}</label>
     </CheckBlockWrapper>
   )
 }

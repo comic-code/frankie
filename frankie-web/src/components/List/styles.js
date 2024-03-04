@@ -84,7 +84,7 @@ export const ListWrapper = styled.ul`
           border-radius: 0.5rem;
 
           &:first-child {
-            background-color: var(--pink);
+            background-color: var(--orange);
           }
         }
       }

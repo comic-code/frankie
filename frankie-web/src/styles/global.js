@@ -58,6 +58,11 @@ const GlobalStyle = createGlobalStyle`
       filter: brightness(1.2);
       transition: 0.3s;
     }
+
+    &:disabled {
+      background-color: #666;
+      cursor: progress;
+    }
   }
 
   input {
@@ -76,6 +81,20 @@ const GlobalStyle = createGlobalStyle`
 
     100% {
       transform: scaleX(1);
+      transform-origin: 0% 0%;
+      opacity: 1;
+    }
+  }
+
+  @keyframes forwardTop {
+    0% {
+      transform: scaleY(0);
+      transform-origin: 0% 0%;
+      opacity: 0;
+    }
+
+    100% {
+      transform: scaleY(1);
       transform-origin: 0% 0%;
       opacity: 1;
     }
