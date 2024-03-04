@@ -6,7 +6,7 @@ export const CheckBlockWrapper = styled.div`
     width: 1.5em;
     height: 1.5em;
     color: black;
-    border: 2px solid var(--background);
+    border: 2px solid var(--white);
     border-radius: 4px;
     appearance: none;
     outline: 0;

@@ -3,11 +3,10 @@ import styled from "styled-components";
 export const ListWrapper = styled.ul`
   display: flex;
   flex-direction: column;
-  /* background-color: var(--white); */
+  background-color: #0003;
   border: 2px solid var(--orange-alt);
-  border-radius: 0.5rem;
   padding: 1rem;
-  max-height: 90vh;
+  max-height: 80vh;
   width: 40rem;
   max-width: 90%;
   overflow-y: auto;
@@ -20,6 +19,13 @@ export const ListWrapper = styled.ul`
     padding: 0.5rem;
     padding-bottom: 1rem;
     color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover{
+      background-color: #343434;
+      transition: 0.3s;
+    }
 
     &:not(:last-child) {
       border-bottom: 2px solid var(--orange-alt);
@@ -73,7 +79,7 @@ export const ListWrapper = styled.ul`
           background-color: var(--green);
           margin-left: 1rem;
           padding: 0.5rem;
-          color: var(--background);
+          /* color: var(--background); */
           border: 2px solid var(--background);
           border-radius: 0.5rem;
 

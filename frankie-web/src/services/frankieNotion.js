@@ -7,3 +7,7 @@ const frankieApi = axios.create({
 export async function getGames() {
   return frankieApi.get('/games').then(json => json.data);
 }
+
+export async function searchGame(q) {
+  return frankieApi.get(`/games/search?q=${q}`).then(json => json.data);
+}

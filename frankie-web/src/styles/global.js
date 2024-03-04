@@ -68,18 +68,28 @@ const GlobalStyle = createGlobalStyle`
   }
 
   @keyframes forwardLeft {
-	0% {
-		transform: scaleX(0);
-		transform-origin: 0% 0%;
-    opacity: 0;
-	}
+    0% {
+      transform: scaleX(0);
+      transform-origin: 0% 0%;
+      opacity: 0;
+    }
 
-	100% {
-		transform: scaleX(1);
-		transform-origin: 0% 0%;
-    opacity: 1;
-	}
-}
+    100% {
+      transform: scaleX(1);
+      transform-origin: 0% 0%;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
 `;
  
 export default GlobalStyle;
