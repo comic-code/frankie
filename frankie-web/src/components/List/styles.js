@@ -59,7 +59,7 @@ export const ListWrapper = styled.ul`
         span.date {
           color: var(--pink);
           font-weight: bold;
-          margin: auto 0;
+          margin-top: auto;
         }
 
         select {
@@ -82,7 +82,6 @@ export const ListWrapper = styled.ul`
           /* color: var(--background); */
           border: 2px solid var(--background);
           border-radius: 0.5rem;
-
           &:first-child {
             background-color: var(--orange);
           }

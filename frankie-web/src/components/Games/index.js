@@ -5,7 +5,7 @@ import { GameSearchWrapper, SearchResult } from "./styled";
 import { saveNewGame, searchGame } from "../../services/frankieNotion";
 
 export default function Games({}) {
-  const { games, setGames } = useContext(GlobalContext);
+  const { games, setGames, handleGetGames } = useContext(GlobalContext);
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -21,15 +21,26 @@ export default function Games({}) {
         setSearchResult(result);
         setShowSearchResult(true);
         setLoading(null);
-        console.log(result);
       })
     }
   }
 
   function handleAddGame(game) {
-    saveNewGame(game).then(e => console.log(e));
-    // name, poster, genres, rating, first_release_date, done
+    const haveGame = games.some(el => el.name === game.name);
+    if(haveGame) {
+      alert('Jogo já existe na lista.');
+    } else {
+      saveNewGame(game).then(() => {
+        handleGetGames();
+        setShowSearchResult(false);
+        setSearch("");
+      });
+    }
   }
+
+  useEffect(() => {
+    handleGetGames();
+  }, []);
 
   return (
     <>
@@ -69,7 +80,7 @@ export default function Games({}) {
                           <div className="game">
                             <h2>{selectSearchedGame.name}</h2>
                             <div className="genres">
-                              {selectSearchedGame.genres.map(genre => 
+                              {selectSearchedGame.genres?.map(genre => 
                                 <span key={genre.id}>{genre.name}</span>  
                               )}
                             </div>

@@ -18,7 +18,7 @@ export default function GlobalProvider({ children }) {
   return (
     <GlobalContext.Provider value={{
       currentSession, setCurrentSession,
-      games, setGames,
+      games, setGames, handleGetGames
     }}>
       {children}
     </GlobalContext.Provider>

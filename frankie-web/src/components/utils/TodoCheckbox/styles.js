@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const CheckBlockWrapper = styled.div`
+  position: relative;
+
   input[type="checkbox"] {
     position: relative;
     width: 1.5em;
@@ -41,7 +43,8 @@ export const CheckBlockWrapper = styled.div`
   }
 
   label {
-    position: relative;
+    position: absolute;
+    top: -5px;
     cursor: pointer;
     font-size: 1.5em;
     font-weight: 600;
@@ -51,6 +54,7 @@ export const CheckBlockWrapper = styled.div`
       position: absolute;
       content: attr(data-content);
       color: #999;
+      display: flex;  
       clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
       text-decoration: line-through;
       text-decoration-thickness: 3px;
