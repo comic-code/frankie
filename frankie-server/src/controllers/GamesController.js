@@ -13,7 +13,7 @@ module.exports = {
     });
     
     const games = database.results.map(game => {
-      const { name, genres, rating, done, poster, release, notes, done_date} = game.properties;
+      const { name, genres, rating, done, poster, release, notes, done_date, done_achievements} = game.properties;
       const posterURL = poster.files[0] ? poster.files[0].external.url : null;
 
       return {
@@ -25,7 +25,8 @@ module.exports = {
         done: done.checkbox,
         doneDate: done_date.date ? done_date.date.start : null,
         poster: posterURL,
-        release: release.date?.start
+        release: release.date?.start,
+        doneAchievements: done_achievements.checkbox
       }
     })
     res.json(games);
