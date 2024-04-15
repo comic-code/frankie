@@ -21,6 +21,7 @@ export const ListWrapper = styled.ul`
     color: #fff;
     cursor: pointer;
     transition: 0.2s;
+    position: relative;
 
     &:hover{
       background-color: #343434;
@@ -31,7 +32,7 @@ export const ListWrapper = styled.ul`
       border-bottom: 2px solid var(--orange-alt);
     }
 
-    img {
+    > img {
       width: 5rem;;
       height: 109px;
       text-align: center;
@@ -87,6 +88,14 @@ export const ListWrapper = styled.ul`
           }
         }
       }
+    }
+
+    img.doneAchievements {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 2.5rem;
+
     }
   }
 `

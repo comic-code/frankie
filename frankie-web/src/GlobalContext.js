@@ -6,6 +6,7 @@ export const GlobalContext = createContext({});
 export default function GlobalProvider({ children }) {
   const [currentSession, setCurrentSession] = useState("finances");
   const [games, setGames] = useState([]);
+  const [selectedStatus, setSelectedStatus] = useState("all");
 
   async function handleGetGames() {
     getGames().then(response => setGames(response));
@@ -18,7 +19,8 @@ export default function GlobalProvider({ children }) {
   return (
     <GlobalContext.Provider value={{
       currentSession, setCurrentSession,
-      games, setGames, handleGetGames
+      games, setGames, handleGetGames,
+      selectedStatus, setSelectedStatus
     }}>
       {children}
     </GlobalContext.Provider>

@@ -49,6 +49,20 @@ export const GameSearchWrapper = styled.section`
       border-bottom-left-radius: 0;
     }
   }
+
+  span.gameTooltip {
+    position: absolute;
+    background: var(--background);
+    color: #fff;
+    display: flex;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    border-radius: 0.5rem;
+    border: 2px solid var(--orange-alt);
+    padding: 0.2rem;
+    z-index: 999;
+    animation: fade 0.25s ease 0s 1 normal forwards;
+  }
 `
 
 export const SearchResult = styled.div`
@@ -78,26 +92,12 @@ export const SearchResult = styled.div`
           border: 2px solid var(--background);
           border-radius: 3px;
           margin-left: 0.5rem;
+          cursor: pointer;
 
           &.active {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
           }
-        }
-
-        span.gameTooltip {
-          position: absolute;
-          background: var(--background);
-          color: #fff;
-          display: flex;
-          bottom: 0.75rem;
-          left: 0.75rem;
-          border-radius: 0.5rem;
-          border: 2px solid var(--orange);
-          padding: 0.2rem;
-          z-index: 999;
-          animation: fade 0.25s ease 0s 1 normal forwards;
-
         }
 
         div.game {
@@ -111,6 +111,13 @@ export const SearchResult = styled.div`
             font-size: 1rem;
             color: #fff;
             margin: 0.25rem;
+            margin-bottom: 0;
+          }
+
+          h3 {
+            font-size: 0.75rem;
+            margin-left: 0.25rem;
+            color: #999;
           }
 
           div.genres {

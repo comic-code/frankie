@@ -3,9 +3,11 @@ import { GlobalContext } from "../../GlobalContext";
 import List from "../List";
 import { GameSearchWrapper, SearchResult } from "./styled";
 import { saveNewGame, searchGame } from "../../services/frankieNotion";
+import moment from "moment";
+import SelectStatus from "../SelectStatus";
 
 export default function Games({}) {
-  const { games, setGames, handleGetGames } = useContext(GlobalContext);
+  const { games, setGames, handleGetGames, selectedStatus, setSelectedStatus } = useContext(GlobalContext);
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -42,6 +44,7 @@ export default function Games({}) {
     handleGetGames();
   }, []);
 
+
   return (
     <>
       <GameSearchWrapper>
@@ -56,9 +59,16 @@ export default function Games({}) {
               />
               <button className="search" onClick={handleSearchGame} disabled={loading === 'search'}>Buscar</button>
             </div>
-          : <button className="new" onClick={() => setShowSearchInput(true)}>
-              Novo jogo
-            </button>
+
+          : <div className="row">
+              <SelectStatus selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
+              <button className="new" onClick={() => setShowSearchInput(true)}>
+                Novo jogo
+              </button>
+            </div>
+        }
+        {gameTooltip &&
+          <span className="gameTooltip">{gameTooltip.name}</span>
         }
         {showSearchResult &&
           <SearchResult>
@@ -70,15 +80,15 @@ export default function Games({}) {
                       <li key={gameIndex}>
                         <img 
                           className={selectSearchedGame?.id === game.id ? 'active' : ''} src={game.poster} alt="poster"
-                          onMouseEnter={() => setGameToolTip(gameIndex)} onMouseLeave={() => setGameToolTip(null)}
+                          onMouseEnter={() => setGameToolTip(game)} onMouseLeave={() => setGameToolTip(null)}
                           onClick={() => setSelectedSearchedGame(game)}  
                         />
-                        {gameTooltip === gameIndex &&
-                          <span className="gameTooltip" onMouseEnter={() => setGameToolTip(gameIndex)}>{game.name}</span>
-                        }
                         {selectSearchedGame?.id === game.id &&
                           <div className="game">
                             <h2>{selectSearchedGame.name}</h2>
+                            {selectSearchedGame.first_release_date &&
+                              <h3>{moment(new Date(selectSearchedGame.first_release_date * 1000).toISOString().substring(0, 10)).format('YYYY')}</h3>
+                            }
                             <div className="genres">
                               {selectSearchedGame.genres?.map(genre => 
                                 <span key={genre.id}>{genre.name}</span>  
@@ -95,7 +105,13 @@ export default function Games({}) {
           </SearchResult>
         }
       </GameSearchWrapper>
-      <List items={games} setItems={setGames}/>
+      <List 
+        items={
+          selectedStatus === 'all' ? games
+          : selectedStatus === 'to-do' ? games.filter(item => !item.done)
+          : games.filter(item => item.done)} 
+        setItems={setGames}
+      />
     </>
   )
 }

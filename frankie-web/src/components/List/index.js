@@ -2,11 +2,11 @@ import { useState } from "react";
 import moment from "moment";
 
 import TodoCheckBox from "../utils/TodoCheckbox";
+import AchievementsIcon from "../assets/icons/achievement.png";
 import { ListWrapper } from "./styles";
 
 export default function List({items, setItems}) {
   const [itemEditing, setItemEditing] = useState(null);
-
   const ratings = [
     "Sem Nota", "5.0 / 5.0 ⭐️", "4.5 / 5.0 ⭐️", "4.0 / 5.0 ⭐️", "3.5 / 5.0 ⭐️", "3.0 / 5.0 ⭐️", "2.5 / 5.0 ⭐️", "2.0 / 5.0 ⭐️", "1.5 / 5.0 ⭐️", "1.0 / 5.0 ⭐️", "0.5 / 5.0 ⭐️", "0.0 / 5.0 ⭐️"
   ]
@@ -59,6 +59,9 @@ export default function List({items, setItems}) {
                     <button>Salvar</button>
                   </div>
                 }
+                {item.doneAchievements && 
+                  <img class="doneAchievements" src={AchievementsIcon} alt="Platinado" />
+                } 
               </div>
             </div>
           </li>
