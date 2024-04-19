@@ -2,14 +2,16 @@ const { Router } = require('express');
 // const AlexaController = require('./controllers/AlexaController');
 // const MoviesController = require('./controllers/MoviesController');
 // const SeriesController = require('./controllers/SeriesController');
-// const BooksController = require('./controllers/BooksController');
 const GamesController = require('./controllers/GamesController');
+const BooksController = require('./controllers/BooksController');
 
 const routes = Router();
   
 routes.get('/games', GamesController.get);
 routes.get('/games/search', GamesController.search);
 routes.post('/games', GamesController.post);
+
+routes.get('/books', BooksController.get);
 
 // routes.get('/movies/genres', MoviesController.getGenres);
 // routes.get('/movies', MoviesController.get);
@@ -29,7 +31,6 @@ routes.post('/games', GamesController.post);
 // routes.get('/alexa/make', AlexaController.make);
 // routes.get('/alexa', AlexaController.get);
 
-// routes.get('/books', BooksController.get);
 // routes.post('/books', BooksController.post);
 // routes.put('/books', BooksController.put);
 
