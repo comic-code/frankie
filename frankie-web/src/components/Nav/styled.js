@@ -6,6 +6,7 @@ export const NavWrapper = styled.nav`
   margin-top: 1rem;
   margin-bottom: 1rem;
   position: absolute;
+  z-index: 50;
   width: 5rem;
   background: var(--white);
   border-bottom-right-radius: 1rem;

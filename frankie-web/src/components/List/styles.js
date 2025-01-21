@@ -4,7 +4,6 @@ export const ListWrapper = styled.ul`
   display: flex;
   flex-direction: column;
   background-color: #0003;
-  border: 2px solid var(--orange-alt);
   padding: 1rem;
   max-height: 80vh;
   width: 40rem;
