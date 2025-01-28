@@ -4,8 +4,8 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --orange: #fb3700;
     --orange-alt: #fb6900;
-    /* --green2: #007E80;
-    --green3: #004853; */
+    --green2: #007E80;
+    /* --green3: #004853; */
     --white: #fefefe;
     --pink: #f88f89;
     --yellow: #eec276;

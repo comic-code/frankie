@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const ListHeaderWrapper = styled.section`
-  background-color: var(--orange-alt);
+  background-color: ${props => props.background || 'var(--orange-alt)'};
   width: 40rem;
   padding: 1rem;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   animation: forwardLeft 0.25s ease 0s 1 normal forwards;
+  margin-top: 1rem;
 
   h1 {
     color: #fff;
@@ -21,10 +22,13 @@ export const ListHeaderWrapper = styled.section`
 
     input {
       margin-left: auto;  
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
       border: 2px solid var(--background);
-      border-right: 0;
+      
+      &[type="search"] {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: 0;
+      }
     }
   }
 
@@ -61,6 +65,10 @@ export const ListHeaderWrapper = styled.section`
     padding: 0.2rem;
     z-index: 999;
     animation: fade 0.25s ease 0s 1 normal forwards;
+  }
+
+  input.bookAuthor {
+    width: 5rem;
   }
 `
 

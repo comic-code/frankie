@@ -20,3 +20,8 @@ export async function saveNewGame(game) {
 export async function getBooks() {
   return frankieApi.get('/books').then(json => json.data);
 }
+
+export async function saveNewBook(book) {
+  const response = await frankieApi.post('/books', book);
+  return response.data;
+}

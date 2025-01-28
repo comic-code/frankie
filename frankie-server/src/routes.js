@@ -12,6 +12,7 @@ routes.get('/games/search', GamesController.search);
 routes.post('/games', GamesController.post);
 
 routes.get('/books', BooksController.get);
+routes.post('/books', BooksController.post);
 
 // routes.get('/movies/genres', MoviesController.getGenres);
 // routes.get('/movies', MoviesController.get);

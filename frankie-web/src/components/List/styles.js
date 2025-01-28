@@ -10,6 +10,7 @@ export const ListWrapper = styled.ul`
   max-width: 90%;
   overflow-y: auto;
   animation: forwardLeft 0.25s ease 0s 1 normal forwards;
+  margin-bottom: auto;
 
   > li {
     list-style: none;

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../GlobalContext";
 import List from "../List";
-import { GameSearchWrapper, SearchResult } from "./styled";
+import { GameSearchWrapper, SearchResult } from "./styles";
 import { saveNewGame, searchGame } from "../../services/frankieNotion";
 import moment from "moment";
 import SelectStatus from "../SelectStatus";

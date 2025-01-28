@@ -3,6 +3,7 @@ import { GlobalContext } from "../../GlobalContext";
 import List from "../List";
 import moment from "moment";
 import SelectStatus from "../SelectStatus";
+import BooksHeader from "./components/BooksHeader";
 
 export default function Books({}) {
   const { selectedStatus, setSelectedStatus, books, setBooks, handleGetBooks } = useContext(GlobalContext);
@@ -20,15 +21,6 @@ export default function Books({}) {
     }
   }
 
-  function handleAddBook(book) {
-    const haveBook = books.some(el => el.name === book.name);
-    if(haveBook) {
-      alert('O livro já existe na lista.');
-    } else {
-
-    }
-  }
-
   useEffect(() => {
     handleGetBooks();
   }, []);
@@ -36,6 +28,7 @@ export default function Books({}) {
 
   return (
     <>
+      <BooksHeader />
       <List 
         items={
           selectedStatus === 'all' ? books

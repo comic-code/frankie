@@ -393,6 +393,13 @@
         "url": "https://www.igdb.com/platforms/tatung-einstein"
     },
     {
+        "id": 506,
+        "generation": 3,
+        "name": "Amstrad GX4000",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plot.png",
+        "url": "https://www.igdb.com/platforms/amstrad-gx4000"
+    },
+    {
         "id": 306,
         "generation": 4,
         "name": "Satellaview",
@@ -574,6 +581,13 @@
         "url": "https://www.igdb.com/platforms/nds"
     },
     {
+        "id": 507,
+        "generation": 6,
+        "name": "Advanced Pico Beena",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plou.png",
+        "url": "https://www.igdb.com/platforms/advanced-pico-beena"
+    },
+    {
         "id": 57,
         "generation": 5,
         "name": "WonderSwan",
@@ -737,6 +751,12 @@
         "url": "https://www.igdb.com/platforms/windows-mixed-reality"
     },
     {
+        "id": 508,
+        "generation": 9,
+        "name": "Nintendo Switch 2",
+        "url": "https://www.igdb.com/platforms/nintendo-switch-2"
+    },
+    {
         "id": 479,
         "name": "Terebikko / See 'n Say Video Phone",
         "url": "https://www.igdb.com/platforms/terebikko-slash-see-n-say-video-phone"
@@ -774,13 +794,6 @@
         "name": "PC-FX",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plf8.png",
         "url": "https://www.igdb.com/platforms/pc-fx"
-    },
-    {
-        "id": 309,
-        "generation": 8,
-        "name": "Evercade",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plky.png",
-        "url": "https://www.igdb.com/platforms/evercade"
     },
     {
         "id": 381,
@@ -941,6 +954,13 @@
         "name": "Zeebo",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plbx.png",
         "url": "https://www.igdb.com/platforms/zeebo"
+    },
+    {
+        "id": 309,
+        "generation": 8,
+        "name": "Evercade",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plky.png",
+        "url": "https://www.igdb.com/platforms/evercade"
     },
     {
         "id": 386,
@@ -1301,24 +1321,5 @@
         "name": "Web browser",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plmx.png",
         "url": "https://www.igdb.com/platforms/browser"
-    },
-    {
-        "id": 90,
-        "name": "Commodore PET",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plf3.png",
-        "url": "https://www.igdb.com/platforms/cpet"
-    },
-    {
-        "id": 126,
-        "name": "TRS-80",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plac.png",
-        "url": "https://www.igdb.com/platforms/trs-80"
-    },
-    {
-        "id": 159,
-        "generation": 7,
-        "name": "Nintendo DSi",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl6u.png",
-        "url": "https://www.igdb.com/platforms/nintendo-dsi"
     }
 ]
