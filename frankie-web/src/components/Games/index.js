@@ -1,10 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../GlobalContext";
 import List from "../List";
-import { GameSearchWrapper, SearchResult } from "./styles";
-import { saveNewGame, searchGame } from "../../services/frankieNotion";
-import moment from "moment";
-import SelectStatus from "../SelectStatus";
+import { patchGame, saveNewGame, searchGame } from "../../services/frankieNotion";
 import ListHeader from "../ListHeader";
 
 export default function Games({}) {
@@ -30,12 +27,28 @@ export default function Games({}) {
     if(haveGame) {
       alert('Jogo já existe na lista.');
     } else {
+      setLoadingArea('save');
       saveNewGame(game).then(() => {
         handleGetGames();
         setShowSearchResult(false);
         setSearch("");
+        setLoadingArea(null);
       });
     }
+  }
+
+  function handleEditGame(item, setItem) {
+    setLoadingArea('edit');
+    patchGame(item).then(() => {
+      handleGetGames();
+      setItem(null);
+      setLoadingArea(null);
+      console.log('in');
+    }).catch(err => {
+      alert('Falha ao atualizar game!');
+      setLoadingArea(null);
+      console.error(err);
+    }); 
   }
 
   useEffect(() => {
@@ -61,6 +74,7 @@ export default function Games({}) {
           : selectedStatus === 'to-do' ? games.filter(item => !item.done)
           : games.filter(item => item.done)} 
         setItems={setGames}
+        handleSaveItem={handleEditGame}
       />
     </>
   )

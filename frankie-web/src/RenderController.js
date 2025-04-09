@@ -4,6 +4,7 @@ import { GlobalContext } from './GlobalContext';
 import Finances from './components/Finances';
 import Games from './components/Games';
 import Books from './components/Books';
+import WhishList from './components/WishList';
 
 export default function RenderController() {
   const { currentSession } = useContext(GlobalContext);
@@ -12,6 +13,7 @@ export default function RenderController() {
       {currentSession === "finances" && <Finances />}
       {currentSession === "games" && <Games />}
       {currentSession === "books" && <Books />}
+      {currentSession === "whishList" && <WhishList />}
     </main>
   )
 }

@@ -4,12 +4,16 @@ const { Router } = require('express');
 // const SeriesController = require('./controllers/SeriesController');
 const GamesController = require('./controllers/GamesController');
 const BooksController = require('./controllers/BooksController');
+const ListController = require('./controllers/ListController');
 
 const routes = Router();
+
+routes.get('/list', ListController.get);
   
 routes.get('/games', GamesController.get);
 routes.get('/games/search', GamesController.search);
 routes.post('/games', GamesController.post);
+routes.patch('/games', GamesController.patch);
 
 routes.get('/books', BooksController.get);
 routes.post('/books', BooksController.post);

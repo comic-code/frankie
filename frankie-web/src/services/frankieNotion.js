@@ -17,11 +17,21 @@ export async function saveNewGame(game) {
   return response.data;
 }
 
+export async function patchGame(game) { 
+  const response = await frankieApi.patch('/games', game);
+  return response;
+}
+
 export async function getBooks() {
   return frankieApi.get('/books').then(json => json.data);
 }
 
 export async function saveNewBook(book) {
   const response = await frankieApi.post('/books', book);
+  return response.data;
+}
+
+export async function getList() {
+  const response = await frankieApi.get('/list');
   return response.data;
 }

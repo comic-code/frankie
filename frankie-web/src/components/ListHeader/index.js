@@ -26,9 +26,11 @@ export default function ListHeader({labels, showSearchInput, setShowSearchInput,
 
           : <div className="row">
               <SelectStatus selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
-              <button className="new" onClick={() => setShowSearchInput(true)}>
-                {labels.button}
-              </button>
+              {labels.button &&
+                <button className="new" onClick={() => setShowSearchInput(true)}>
+                  {labels.button}
+                </button>
+              }
             </div>
         }
         {gameTooltip &&
@@ -58,7 +60,7 @@ export default function ListHeader({labels, showSearchInput, setShowSearchInput,
                                 <span key={genre.id}>{genre.name}</span>  
                               )}
                             </div>
-                            <button onClick={() => handleAddItem(game)}>Adicionar</button>
+                            <button onClick={() => handleAddItem(game)} disabled={loadingArea === 'save'}>Adicionar</button>
                           </div>
                         }
                       </li>

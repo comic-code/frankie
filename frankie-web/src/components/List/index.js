@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import moment from "moment";
 
 import TodoCheckBox from "../utils/TodoCheckbox";
 import AchievementsIcon from "../../assets/icons/achievement.png";
 import { ListWrapper } from "./styles";
+import { GlobalContext } from "../../GlobalContext";
 
-export default function List({items, setItems, color}) {
+export default function List({items, setItems, color, handleSaveItem}) {
   const [itemEditing, setItemEditing] = useState(null);
+  const { loadingArea } = useContext(GlobalContext);
   const ratings = [
     "Sem Nota", "5.0 / 5.0 ⭐️", "4.5 / 5.0 ⭐️", "4.0 / 5.0 ⭐️", "3.5 / 5.0 ⭐️", "3.0 / 5.0 ⭐️", "2.5 / 5.0 ⭐️", "2.0 / 5.0 ⭐️", "1.5 / 5.0 ⭐️", "1.0 / 5.0 ⭐️", "0.5 / 5.0 ⭐️", "0.0 / 5.0 ⭐️"
   ]
@@ -20,12 +22,6 @@ export default function List({items, setItems, color}) {
           rating: props.rating ? props.rating : old.rating
         }
       }
-    });
-  }
-
-  function handleSaveItem(item, changes) {
-    setItems(old => {
-      
     });
   }
 
@@ -56,7 +52,7 @@ export default function List({items, setItems, color}) {
                 {(itemEditing?.id === item.id && itemEditing?.done !== item.done) &&
                   <div className="editing">
                     <button onClick={() => setItemEditing(null)}>Cancelar</button>
-                    <button>Salvar</button>
+                    <button onClick={() => handleSaveItem(itemEditing, setItemEditing)} disabled={loadingArea === 'edit'}>Salvar</button>
                   </div>
                 }
                 {item.doneAchievements && 

@@ -6,30 +6,22 @@ const notion = new NotionClient({ auth: process.env.NOTION_TOKEN });
 module.exports = {
   async get(req, res) {
     const database = await notion.databases.query({
-      database_id: process.env.NOTION_GAMES,
+      database_id: process.env.NOTION_WISHLIST,
       sorts: [
         {property: "done", direction: "ascending"}
       ]
     });
     
-    const games = database.results.map(game => {
-      const { name, genres, rating, done, poster, release, notes, done_date, done_achievements} = game.properties;
-      const posterURL = poster.files[0] ? poster.files[0].external.url : null;
+    const list = database.results.map(item => {
+      const { label, priority, averageValue } = item.properties;
 
       return {
-        id: game.id,
-        name: name.title[0].text.content,
-        notes: notes ? notes.rich_text[0]?.plain_text : null,
-        genres: genres.multi_select.map(gender => ({name: gender.name, color: gender.color})),
-        rating: rating.select?.name ? rating.select?.name : null,
-        done: done.checkbox,
-        doneDate: done_date.date ? done_date.date.start : null,
-        poster: posterURL,
-        release: release.date?.start,
-        doneAchievements: done_achievements.checkbox
+        label: label.title[0]?.text.content || '',
+        priority: priority.select?.name || '',
+        averageValue: averageValue.number || 0
       }
     })
-    res.json(games);
+    res.json(list);
   },
 
   async search(req, res) {
@@ -65,25 +57,4 @@ module.exports = {
       res.json({genres: data.properties.genres.multi_select, ...req.body})
     });
   },
-
-  async patch(req, res) {
-    const { id, rating, done } = req.body;
-    notion.pages.update({
-      page_id: id,
-      properties: {
-        rating: {select: rating ? {name: rating} : null},
-        done: {checkbox: done || false},
-        done_date: {date: done 
-          ? {
-            start: new Date().toISOString().substring(0, 10) 
-          }
-          : null
-        }
-      }
-    }).then(() => {
-      res.status(200).json({ message: 'Success' });
-    }).catch(error => {
-      res.status(500).json({ error: "Failed to update game", details: error });
-    });
-  }
 }
