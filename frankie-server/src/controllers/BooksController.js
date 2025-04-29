@@ -39,7 +39,7 @@ module.exports = {
         author: { rich_text: [{ text: { content: author } }] },
         poster: {
           files: [
-            { name: poster, type: 'external', external: { url: coverURL } }
+            { name: coverURL, type: 'external', external: { url: coverURL }}
           ]
         }
       }
@@ -57,4 +57,25 @@ module.exports = {
       res.status(500).json({ error: "Failed to create book", details: error });
     });
   },
+
+  async patch(req, res) {
+    const { id, rating, done } = req.body;
+    notion.pages.update({
+      page_id: id,
+      properties: {
+        rating: {select: rating ? {name: rating} : null},
+        done: {checkbox: done || false},
+        done_date: {date: done 
+          ? {
+            start: new Date().toISOString().substring(0, 10) 
+          }
+          : null
+        }
+      }
+    }).then(() => {
+      res.status(200).json({ message: 'Success' });
+    }).catch(error => {
+      res.status(500).json({ error: "Failed to update book", details: error });
+    });
+  }
 };

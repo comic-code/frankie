@@ -17,7 +17,7 @@ export default function BooksHeader({ }) {
     const haveBook = books.some(el => el.name === title);
     if(haveBook) {
       alert('Livro já existe na lista.');
-    } else if(!title || !author || coverURL) {
+    } else if(!title || !author || !coverURL) {
       alert('Preencha os dados!');
     } else {
       const book = {

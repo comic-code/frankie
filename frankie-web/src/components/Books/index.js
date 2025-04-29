@@ -4,9 +4,10 @@ import List from "../List";
 import moment from "moment";
 import SelectStatus from "../SelectStatus";
 import BooksHeader from "./components/BooksHeader";
+import { patchBook } from "../../services/frankieNotion";
 
 export default function Books({}) {
-  const { selectedStatus, setSelectedStatus, books, setBooks, handleGetBooks } = useContext(GlobalContext);
+  const { selectedStatus, setLoadingArea, books, setBooks, handleGetBooks } = useContext(GlobalContext);
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -15,10 +16,17 @@ export default function Books({}) {
   const [gameTooltip, setGameToolTip] = useState(null);
   const [selectSearchedGame, setSelectedSearchedGame] = useState(null);
 
-  function handleSearchBook() {
-    if(search) {
-      
-    }
+  function handleEditBook(item, setItem) {
+    setLoadingArea('edit');
+    patchBook(item).then(() => {
+      handleGetBooks();
+      setLoadingArea(null);
+      setItem(null);
+    }).catch(err => {
+      alert('Falha ao atualizar livro!');
+      setLoadingArea(null);
+      console.error(err);
+    }); 
   }
 
   useEffect(() => {
@@ -35,6 +43,7 @@ export default function Books({}) {
           : selectedStatus === 'to-do' ? books.filter(item => !item.done)
           : books.filter(item => item.done)} 
         setItems={setBooks}
+        handleSaveItem={handleEditBook}
       />
     </>
   )

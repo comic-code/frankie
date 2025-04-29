@@ -31,7 +31,18 @@ export async function saveNewBook(book) {
   return response.data;
 }
 
+export async function patchBook(book) {
+  const response = await frankieApi.patch('/books', book);
+  return response.data;
+}
+
+
 export async function getList() {
   const response = await frankieApi.get('/list');
+  return response.data;
+}
+
+export async function saveWishListItem(item) {
+  const response = await frankieApi.post('/list', item);
   return response.data;
 }

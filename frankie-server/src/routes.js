@@ -17,6 +17,7 @@ routes.patch('/games', GamesController.patch);
 
 routes.get('/books', BooksController.get);
 routes.post('/books', BooksController.post);
+routes.patch('/books', BooksController.patch);
 
 // routes.get('/movies/genres', MoviesController.getGenres);
 // routes.get('/movies', MoviesController.get);
@@ -35,8 +36,5 @@ routes.post('/books', BooksController.post);
 // routes.get('/alexa/say', AlexaController.say);
 // routes.get('/alexa/make', AlexaController.make);
 // routes.get('/alexa', AlexaController.get);
-
-// routes.post('/books', BooksController.post);
-// routes.put('/books', BooksController.put);
 
 module.exports = routes;
