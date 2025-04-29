@@ -7,10 +7,12 @@ import moment from "moment";
 import SelectStatus from "../SelectStatus";
 import ListHeader from "../ListHeader";
 import { ListWrapper } from "../List/styles";
+import WishListForm from "./WishListForm";
 
 export default function WhishList({}) {
   const { selectedStatus, setLoadingArea } = useContext(GlobalContext);
   const [items, setItems] = useState([]);
+  const [showWishForm, setShowWishForm] = useState(false);
 
   function handleAddItem(item) {
     
@@ -25,7 +27,7 @@ export default function WhishList({}) {
 
   return (
     <>
-      <ListHeader labels={{title: 'Lista de compras', button: 'Adicionar Novo Item'}} />
+      <WishListForm labels={{title: 'Lista de compras', button: 'Adicionar Novo Item'}} setShowForm={setShowWishForm} showForm={showWishForm} handleAddItem={handleAddItem} />
       <ListWrapper>
         <WishListHeader>
           <div className="listItemLabel">Label</div>
