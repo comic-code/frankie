@@ -26,18 +26,19 @@ module.exports = {
 
   async post(req, res) {
     const { label, priority, averageValue } = req.body;
+    console.log(req.body);
     notion.pages.create({
       parent: {
         database_id: process.env.NOTION_WISHLIST
       },
       properties: {
         label: { title: [{text: {content: label}}] },
-        priority: {select: priority},
-        averageValue: {number: averageValue},
+        priority: {select: {name: priority}},
+        averageValue: {number: parseInt(averageValue)},
         done: {checkbox: false},
       }
     }).then((data) => {
-      res.json({genres: data.properties.genres.multi_select, ...req.body})
+      res.status(200).json({ message: 'Success' });
     });
   },
 }

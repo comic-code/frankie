@@ -6,22 +6,12 @@ import moment from "moment";
 import { ListHeaderWrapper } from "../ListHeader/styles";
 import { saveWishListItem } from "../../services/frankieNotion";
 
-export default function WishListForm({labels, showForm, setShowForm }) {
+export default function WishListForm({labels, showForm, setShowForm, handleAddItem }) {
   const { selectedStatus, setSelectedStatus, loadingArea, setLoadingArea } = useContext(GlobalContext);
   const [label, setLabel] = useState('');
   const [priority, setPriority] = useState('Prioridade');
   const [averageValue, setAverageValue] = useState('');
   const priorities = ['Prioridade', 'Baixa', 'Média', 'Alta'];
-
-  function handleAddItem() {
-    if(priority === 'Prioridade' || label) {
-      return 
-    } else {
-      saveWishListItem({label, priority, averageValue}).then(response => {
-        console.log(response);
-      })
-    }
-  }
 
   return (
     <ListHeaderWrapper>
@@ -38,13 +28,13 @@ export default function WishListForm({labels, showForm, setShowForm }) {
                 ))}
               </select>
               <input type="text" value={averageValue} onChange={e => setAverageValue(e.target.value)} placeholder='Preço Estimado' style={{ width: 115 }} />
-              <button className="new" onClick={handleAddItem} disabled={loadingArea === 'add'}>Adicionar</button>
+              <button className="new" onClick={() => handleAddItem(priority, label, averageValue)} disabled={loadingArea === 'add'}>Adicionar</button>
           </div>
       
         : <div className="row">
             <SelectStatus selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
             <button className="new" onClick={() => setShowForm(true)}>
-              Novo Livro
+              {labels.button}
             </button>
           </div>
               }

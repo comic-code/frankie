@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../GlobalContext";
 import List from "../List";
 import { GameSearchWrapper, SearchResult, WishListHeader, WishListItem } from "./styles";
-import { getList, saveNewGame, searchGame } from "../../services/frankieNotion";
+import { getList, saveNewGame, saveWishListItem, searchGame } from "../../services/frankieNotion";
 import moment from "moment";
 import SelectStatus from "../SelectStatus";
 import ListHeader from "../ListHeader";
@@ -14,15 +14,21 @@ export default function WhishList({}) {
   const [items, setItems] = useState([]);
   const [showWishForm, setShowWishForm] = useState(false);
 
-  function handleAddItem(item) {
-    
+  function handleAddItem(priority, label, averageValue) {
+    if(priority === 'Prioridade' || !label) {
+      return 
+    } else {
+      setLoadingArea('add');
+      saveWishListItem({label, priority, averageValue}).then(response => {
+        setLoadingArea(null);
+        console.log(response);
+        setItems(old => [{label, priority, averageValue}, ...old])
+      })
+    }
   }
 
   useEffect(() => {
-    getList().then(list => {
-      console.log(list);
-      setItems(list);
-    });
+    getList().then(list => { setItems(list); });
   }, []);
 
   return (
@@ -43,7 +49,7 @@ export default function WhishList({}) {
               {item.priority}
             </div>
             <div className="listItemValue">
-              {item.averageValue}
+              {new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(item.averageValue)}
             </div>
           </WishListItem>
         ))}

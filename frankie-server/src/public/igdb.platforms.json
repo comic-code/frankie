@@ -419,13 +419,6 @@
         "url": "https://www.igdb.com/platforms/ouya"
     },
     {
-        "id": 78,
-        "generation": 4,
-        "name": "Sega CD",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl7w.png",
-        "url": "https://www.igdb.com/platforms/segacd"
-    },
-    {
         "id": 85,
         "name": "Donner Model 30",
         "url": "https://www.igdb.com/platforms/donner30"
@@ -501,6 +494,13 @@
         "url": "https://www.igdb.com/platforms/sol-20"
     },
     {
+        "id": 78,
+        "generation": 4,
+        "name": "Sega CD",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl7w.png",
+        "url": "https://www.igdb.com/platforms/sega-cd"
+    },
+    {
         "id": 98,
         "name": "DEC GT40",
         "url": "https://www.igdb.com/platforms/gt40"
@@ -556,13 +556,6 @@
         "name": "Commodore C64/128/MAX",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pll3.png",
         "url": "https://www.igdb.com/platforms/c64"
-    },
-    {
-        "id": 18,
-        "generation": 3,
-        "name": "Nintendo Entertainment System",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plmo.png",
-        "url": "https://www.igdb.com/platforms/nes"
     },
     {
         "id": 20,
@@ -709,6 +702,13 @@
         "name": "NEC PC-6000 Series",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plaa.png",
         "url": "https://www.igdb.com/platforms/nec-pc-6000-series"
+    },
+    {
+        "id": 18,
+        "generation": 3,
+        "name": "Nintendo Entertainment System",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plmo.png",
+        "url": "https://www.igdb.com/platforms/nes"
     },
     {
         "id": 161,
@@ -1071,13 +1071,6 @@
         "url": "https://www.igdb.com/platforms/pokemon-mini"
     },
     {
-        "id": 169,
-        "generation": 9,
-        "name": "Xbox Series X|S",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plfl.png",
-        "url": "https://www.igdb.com/platforms/series-x-s"
-    },
-    {
         "id": 236,
         "name": "Exidy Sorcerer",
         "url": "https://www.igdb.com/platforms/exidy-sorcerer"
@@ -1107,6 +1100,13 @@
         "name": "PC-FX",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plf8.png",
         "url": "https://www.igdb.com/platforms/pc-fx"
+    },
+    {
+        "id": 169,
+        "generation": 9,
+        "name": "Xbox Series X|S",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plfl.png",
+        "url": "https://www.igdb.com/platforms/series-x-s"
     },
     {
         "id": 405,

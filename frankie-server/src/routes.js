@@ -9,6 +9,7 @@ const ListController = require('./controllers/ListController');
 const routes = Router();
 
 routes.get('/list', ListController.get);
+routes.post('/list', ListController.post);
   
 routes.get('/games', GamesController.get);
 routes.get('/games/search', GamesController.search);
