@@ -3,6 +3,7 @@ import GlobalProvider from './GlobalContext';
 import Nav from './components/Nav';
 import GlobalStyle from './styles/global';
 import RenderController from './RenderController';
+import FloatingMenu from './components/FloatingMenu';
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
       <div className="App">
         <GlobalStyle />
         <Nav />
+        <FloatingMenu />
         <RenderController />
       </div>
     </GlobalProvider>

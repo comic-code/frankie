@@ -59,6 +59,13 @@
         "url": "https://www.igdb.com/platforms/thomson-mo5"
     },
     {
+        "id": 510,
+        "generation": 6,
+        "name": "e-Reader / Card-e Reader",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/ploy.png",
+        "url": "https://www.igdb.com/platforms/e-reader-slash-card-e-reader"
+    },
+    {
         "id": 309,
         "generation": 8,
         "name": "Evercade",
@@ -298,13 +305,6 @@
         "url": "https://www.igdb.com/platforms/c-plus-4"
     },
     {
-        "id": 123,
-        "generation": 5,
-        "name": "WonderSwan Color",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl79.png",
-        "url": "https://www.igdb.com/platforms/wonderswan-color"
-    },
-    {
         "id": 128,
         "generation": 4,
         "name": "PC Engine SuperGrafx",
@@ -316,6 +316,13 @@
         "name": "Texas Instruments TI-99",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plf0.png",
         "url": "https://www.igdb.com/platforms/ti-99"
+    },
+    {
+        "id": 123,
+        "generation": 5,
+        "name": "WonderSwan Color",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plp0.png",
+        "url": "https://www.igdb.com/platforms/wonderswan-color"
     },
     {
         "id": 482,
@@ -419,6 +426,12 @@
         "url": "https://www.igdb.com/platforms/ouya"
     },
     {
+        "id": 78,
+        "generation": 4,
+        "name": "Sega CD",
+        "url": "https://www.igdb.com/platforms/sega-cd"
+    },
+    {
         "id": 85,
         "name": "Donner Model 30",
         "url": "https://www.igdb.com/platforms/donner30"
@@ -494,13 +507,6 @@
         "url": "https://www.igdb.com/platforms/sol-20"
     },
     {
-        "id": 78,
-        "generation": 4,
-        "name": "Sega CD",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl7w.png",
-        "url": "https://www.igdb.com/platforms/sega-cd"
-    },
-    {
         "id": 98,
         "name": "DEC GT40",
         "url": "https://www.igdb.com/platforms/gt40"
@@ -558,6 +564,13 @@
         "url": "https://www.igdb.com/platforms/c64"
     },
     {
+        "id": 86,
+        "generation": 4,
+        "name": "TurboGrafx-16/PC Engine",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl88.png",
+        "url": "https://www.igdb.com/platforms/turbografx16--1"
+    },
+    {
         "id": 20,
         "generation": 7,
         "name": "Nintendo DS",
@@ -597,13 +610,6 @@
         "name": "BlackBerry OS",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/bezbkk17hk0uobdkhjcv.png",
         "url": "https://www.igdb.com/platforms/blackberry"
-    },
-    {
-        "id": 86,
-        "generation": 4,
-        "name": "TurboGrafx-16/PC Engine",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl88.png",
-        "url": "https://www.igdb.com/platforms/turbografx16--1"
     },
     {
         "id": 101,
@@ -1296,13 +1302,6 @@
         "name": "Nintendo 64",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl78.png",
         "url": "https://www.igdb.com/platforms/n64"
-    },
-    {
-        "id": 5,
-        "generation": 7,
-        "name": "Wii",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl92.png",
-        "url": "https://www.igdb.com/platforms/wii"
     },
     {
         "id": 14,
