@@ -1,24 +1,17 @@
 [
     {
-        "id": 306,
-        "generation": 4,
-        "name": "Satellaview",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plgj.png",
-        "url": "https://www.igdb.com/platforms/satellaview"
-    },
-    {
-        "id": 339,
-        "generation": 4,
-        "name": "Sega Pico",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plgo.png",
-        "url": "https://www.igdb.com/platforms/sega-pico"
-    },
-    {
         "id": 376,
         "generation": 3,
         "name": "Epoch Super Cassette Vision",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plkn.png",
         "url": "https://www.igdb.com/platforms/epoch-super-cassette-vision"
+    },
+    {
+        "id": 510,
+        "generation": 6,
+        "name": "e-Reader / Card-e Reader",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/ploy.png",
+        "url": "https://www.igdb.com/platforms/e-reader-slash-card-e-reader"
     },
     {
         "id": 12,
@@ -59,18 +52,18 @@
         "url": "https://www.igdb.com/platforms/thomson-mo5"
     },
     {
-        "id": 510,
-        "generation": 6,
-        "name": "e-Reader / Card-e Reader",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/ploy.png",
-        "url": "https://www.igdb.com/platforms/e-reader-slash-card-e-reader"
+        "id": 306,
+        "generation": 4,
+        "name": "Satellaview",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plgj.png",
+        "url": "https://www.igdb.com/platforms/satellaview"
     },
     {
-        "id": 309,
-        "generation": 8,
-        "name": "Evercade",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plky.png",
-        "url": "https://www.igdb.com/platforms/evercade"
+        "id": 339,
+        "generation": 4,
+        "name": "Sega Pico",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plgo.png",
+        "url": "https://www.igdb.com/platforms/sega-pico"
     },
     {
         "id": 389,
@@ -85,6 +78,13 @@
         "url": "https://www.igdb.com/platforms/dos"
     },
     {
+        "id": 60,
+        "generation": 3,
+        "name": "Atari 7800",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl8f.png",
+        "url": "https://www.igdb.com/platforms/atari7800"
+    },
+    {
         "id": 41,
         "generation": 8,
         "name": "Wii U",
@@ -92,11 +92,18 @@
         "url": "https://www.igdb.com/platforms/wiiu"
     },
     {
-        "id": 60,
+        "id": 309,
+        "generation": 8,
+        "name": "Evercade",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plky.png",
+        "url": "https://www.igdb.com/platforms/evercade"
+    },
+    {
+        "id": 506,
         "generation": 3,
-        "name": "Atari 7800",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl8f.png",
-        "url": "https://www.igdb.com/platforms/atari7800"
+        "name": "Amstrad GX4000",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plot.png",
+        "url": "https://www.igdb.com/platforms/gx4000"
     },
     {
         "id": 112,
@@ -154,7 +161,7 @@
         "id": 132,
         "name": "Amazon Fire TV",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl91.png",
-        "url": "https://www.igdb.com/platforms/amazon-fire-tv"
+        "url": "https://www.igdb.com/platforms/firetv"
     },
     {
         "id": 413,
@@ -181,17 +188,17 @@
         "url": "https://www.igdb.com/platforms/dragon-32-slash-64"
     },
     {
-        "id": 154,
-        "name": "Amstrad PCW",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plf7.png",
-        "url": "https://www.igdb.com/platforms/amstrad-pcw"
-    },
-    {
         "id": 167,
         "generation": 9,
         "name": "PlayStation 5",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plos.png",
         "url": "https://www.igdb.com/platforms/ps5"
+    },
+    {
+        "id": 154,
+        "name": "Amstrad PCW",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plf7.png",
+        "url": "https://www.igdb.com/platforms/apcw"
     },
     {
         "id": 70,
@@ -233,12 +240,6 @@
         "url": "https://www.igdb.com/platforms/panasonic-jungle"
     },
     {
-        "id": 504,
-        "name": "Uzebox",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plor.png",
-        "url": "https://www.igdb.com/platforms/uzebox"
-    },
-    {
         "id": 65,
         "name": "Atari 8-bit",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plad.png",
@@ -256,6 +257,12 @@
         "name": "PlayStation VR",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plnc.png",
         "url": "https://www.igdb.com/platforms/psvr"
+    },
+    {
+        "id": 504,
+        "name": "Uzebox",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plor.png",
+        "url": "https://www.igdb.com/platforms/uzebox"
     },
     {
         "id": 440,
@@ -305,6 +312,13 @@
         "url": "https://www.igdb.com/platforms/c-plus-4"
     },
     {
+        "id": 123,
+        "generation": 5,
+        "name": "WonderSwan Color",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plp0.png",
+        "url": "https://www.igdb.com/platforms/wonderswan-color"
+    },
+    {
         "id": 128,
         "generation": 4,
         "name": "PC Engine SuperGrafx",
@@ -316,13 +330,6 @@
         "name": "Texas Instruments TI-99",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plf0.png",
         "url": "https://www.igdb.com/platforms/ti-99"
-    },
-    {
-        "id": 123,
-        "generation": 5,
-        "name": "WonderSwan Color",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plp0.png",
-        "url": "https://www.igdb.com/platforms/wonderswan-color"
     },
     {
         "id": 482,
@@ -351,11 +358,35 @@
         "url": "https://www.igdb.com/platforms/ps2"
     },
     {
+        "id": 88,
+        "generation": 1,
+        "name": "Odyssey",
+        "url": "https://www.igdb.com/platforms/odyssey--1"
+    },
+    {
+        "id": 97,
+        "name": "PDP-8",
+        "url": "https://www.igdb.com/platforms/pdp-8--1"
+    },
+    {
         "id": 23,
         "generation": 6,
         "name": "Dreamcast",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl7i.png",
         "url": "https://www.igdb.com/platforms/dc"
+    },
+    {
+        "id": 136,
+        "generation": 4,
+        "name": "Neo Geo CD",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl7t.png",
+        "url": "https://www.igdb.com/platforms/neo-geo-cd"
+    },
+    {
+        "id": 134,
+        "name": "Acorn Electron",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl8d.png",
+        "url": "https://www.igdb.com/platforms/acorn-electron"
     },
     {
         "id": 35,
@@ -377,34 +408,48 @@
         "url": "https://www.igdb.com/platforms/zod"
     },
     {
-        "id": 88,
-        "generation": 1,
-        "name": "Odyssey",
-        "url": "https://www.igdb.com/platforms/odyssey--1"
-    },
-    {
-        "id": 97,
-        "name": "PDP-8",
-        "url": "https://www.igdb.com/platforms/pdp-8--1"
-    },
-    {
-        "id": 134,
-        "name": "Acorn Electron",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl8d.png",
-        "url": "https://www.igdb.com/platforms/acorn-electron"
-    },
-    {
-        "id": 136,
+        "id": 78,
         "generation": 4,
-        "name": "Neo Geo CD",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl7t.png",
-        "url": "https://www.igdb.com/platforms/neo-geo-cd"
+        "name": "Sega CD",
+        "url": "https://www.igdb.com/platforms/sega-cd"
+    },
+    {
+        "id": 144,
+        "name": "AY-3-8710",
+        "url": "https://www.igdb.com/platforms/ay-3-8710"
+    },
+    {
+        "id": 146,
+        "name": "AY-3-8605",
+        "url": "https://www.igdb.com/platforms/ay-3-8605"
+    },
+    {
+        "id": 163,
+        "name": "SteamVR",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/ipbdzzx7z3rwuzm9big4.png",
+        "url": "https://www.igdb.com/platforms/steam-vr"
     },
     {
         "id": 373,
         "name": "Sinclair ZX81",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plgr.png",
         "url": "https://www.igdb.com/platforms/sinclair-zx81"
+    },
+    {
+        "id": 147,
+        "name": "AY-3-8606",
+        "url": "https://www.igdb.com/platforms/ay-3-8606"
+    },
+    {
+        "id": 149,
+        "name": "PC-9800 Series",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pla6.png",
+        "url": "https://www.igdb.com/platforms/pc-9800-series"
+    },
+    {
+        "id": 237,
+        "name": "Sol-20",
+        "url": "https://www.igdb.com/platforms/sol-20"
     },
     {
         "id": 505,
@@ -426,21 +471,9 @@
         "url": "https://www.igdb.com/platforms/ouya"
     },
     {
-        "id": 78,
-        "generation": 4,
-        "name": "Sega CD",
-        "url": "https://www.igdb.com/platforms/sega-cd"
-    },
-    {
         "id": 85,
         "name": "Donner Model 30",
         "url": "https://www.igdb.com/platforms/donner30"
-    },
-    {
-        "id": 163,
-        "name": "SteamVR",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/ipbdzzx7z3rwuzm9big4.png",
-        "url": "https://www.igdb.com/platforms/steam-vr"
     },
     {
         "id": 115,
@@ -481,35 +514,23 @@
         "url": "https://www.igdb.com/platforms/pc-50x-family"
     },
     {
-        "id": 144,
-        "name": "AY-3-8710",
-        "url": "https://www.igdb.com/platforms/ay-3-8710"
-    },
-    {
-        "id": 146,
-        "name": "AY-3-8605",
-        "url": "https://www.igdb.com/platforms/ay-3-8605"
-    },
-    {
-        "id": 147,
-        "name": "AY-3-8606",
-        "url": "https://www.igdb.com/platforms/ay-3-8606"
-    },
-    {
-        "id": 149,
-        "name": "PC-9800 Series",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pla6.png",
-        "url": "https://www.igdb.com/platforms/pc-9800-series"
-    },
-    {
-        "id": 237,
-        "name": "Sol-20",
-        "url": "https://www.igdb.com/platforms/sol-20"
+        "id": 9,
+        "generation": 7,
+        "name": "PlayStation 3",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/tuyy1nrqodtmbqajp4jg.png",
+        "url": "https://www.igdb.com/platforms/ps3"
     },
     {
         "id": 98,
         "name": "DEC GT40",
         "url": "https://www.igdb.com/platforms/gt40"
+    },
+    {
+        "id": 11,
+        "generation": 6,
+        "name": "Xbox",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl7e.png",
+        "url": "https://www.igdb.com/platforms/xbox"
     },
     {
         "id": 111,
@@ -523,11 +544,24 @@
         "url": "https://www.igdb.com/platforms/oculus-vr"
     },
     {
-        "id": 307,
-        "generation": 2,
-        "name": "Game & Watch",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pler.png",
-        "url": "https://www.igdb.com/platforms/g-and-w"
+        "id": 15,
+        "name": "Commodore C64/128/MAX",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pll3.png",
+        "url": "https://www.igdb.com/platforms/c64"
+    },
+    {
+        "id": 18,
+        "generation": 3,
+        "name": "Nintendo Entertainment System",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plmo.png",
+        "url": "https://www.igdb.com/platforms/nes"
+    },
+    {
+        "id": 20,
+        "generation": 7,
+        "name": "Nintendo DS",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl6t.png",
+        "url": "https://www.igdb.com/platforms/nds"
     },
     {
         "id": 308,
@@ -537,45 +571,16 @@
         "url": "https://www.igdb.com/platforms/playdia"
     },
     {
-        "id": 506,
-        "generation": 3,
-        "name": "Amstrad GX4000",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plot.png",
-        "url": "https://www.igdb.com/platforms/amstrad-gx4000"
+        "id": 116,
+        "name": "Acorn Archimedes",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plas.png",
+        "url": "https://www.igdb.com/platforms/acorn-archimedes"
     },
     {
-        "id": 9,
-        "generation": 7,
-        "name": "PlayStation 3",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/tuyy1nrqodtmbqajp4jg.png",
-        "url": "https://www.igdb.com/platforms/ps3"
-    },
-    {
-        "id": 11,
-        "generation": 6,
-        "name": "Xbox",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl7e.png",
-        "url": "https://www.igdb.com/platforms/xbox"
-    },
-    {
-        "id": 15,
-        "name": "Commodore C64/128/MAX",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pll3.png",
-        "url": "https://www.igdb.com/platforms/c64"
-    },
-    {
-        "id": 86,
-        "generation": 4,
-        "name": "TurboGrafx-16/PC Engine",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl88.png",
-        "url": "https://www.igdb.com/platforms/turbografx16--1"
-    },
-    {
-        "id": 20,
-        "generation": 7,
-        "name": "Nintendo DS",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl6t.png",
-        "url": "https://www.igdb.com/platforms/nds"
+        "id": 117,
+        "name": "Philips CD-i",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl80.png",
+        "url": "https://www.igdb.com/platforms/philips-cdi"
     },
     {
         "id": 22,
@@ -592,11 +597,10 @@
         "url": "https://www.igdb.com/platforms/psvita"
     },
     {
-        "id": 66,
-        "generation": 2,
-        "name": "Atari 5200",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl8g.png",
-        "url": "https://www.igdb.com/platforms/atari5200"
+        "id": 101,
+        "name": "Ferranti Nimrod Computer",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plaq.png",
+        "url": "https://www.igdb.com/platforms/nimrod"
     },
     {
         "id": 67,
@@ -612,10 +616,18 @@
         "url": "https://www.igdb.com/platforms/blackberry"
     },
     {
-        "id": 101,
-        "name": "Ferranti Nimrod Computer",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plaq.png",
-        "url": "https://www.igdb.com/platforms/nimrod"
+        "id": 86,
+        "generation": 4,
+        "name": "TurboGrafx-16/PC Engine",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl88.png",
+        "url": "https://www.igdb.com/platforms/turbografx16--1"
+    },
+    {
+        "id": 66,
+        "generation": 2,
+        "name": "Atari 5200",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl8g.png",
+        "url": "https://www.igdb.com/platforms/atari5200"
     },
     {
         "id": 108,
@@ -632,26 +644,7 @@
         "id": 113,
         "name": "OnLive Game System",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plan.png",
-        "url": "https://www.igdb.com/platforms/onlive-game-system"
-    },
-    {
-        "id": 114,
-        "generation": 5,
-        "name": "Amiga CD32",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl7v.png",
-        "url": "https://www.igdb.com/platforms/amiga-cd32"
-    },
-    {
-        "id": 116,
-        "name": "Acorn Archimedes",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plas.png",
-        "url": "https://www.igdb.com/platforms/acorn-archimedes"
-    },
-    {
-        "id": 117,
-        "name": "Philips CD-i",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl80.png",
-        "url": "https://www.igdb.com/platforms/philips-cd-i"
+        "url": "https://www.igdb.com/platforms/onlive"
     },
     {
         "id": 118,
@@ -710,22 +703,24 @@
         "url": "https://www.igdb.com/platforms/nec-pc-6000-series"
     },
     {
-        "id": 18,
-        "generation": 3,
-        "name": "Nintendo Entertainment System",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plmo.png",
-        "url": "https://www.igdb.com/platforms/nes"
+        "id": 307,
+        "generation": 2,
+        "name": "Game & Watch",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pler.png",
+        "url": "https://www.igdb.com/platforms/g-and-w"
+    },
+    {
+        "id": 114,
+        "generation": 5,
+        "name": "Amiga CD32",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl7v.png",
+        "url": "https://www.igdb.com/platforms/amiga-cd32"
     },
     {
         "id": 161,
         "name": "Windows Mixed Reality",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plm4.png",
         "url": "https://www.igdb.com/platforms/windows-mixed-reality"
-    },
-    {
-        "id": 103,
-        "name": "PDP-7",
-        "url": "https://www.igdb.com/platforms/pdp-7--1"
     },
     {
         "id": 374,
@@ -752,6 +747,11 @@
         "url": "https://www.igdb.com/platforms/game-dot-com"
     },
     {
+        "id": 103,
+        "name": "PDP-7",
+        "url": "https://www.igdb.com/platforms/pdp-7--1"
+    },
+    {
         "id": 382,
         "name": "Intellivision Amico",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plkp.png",
@@ -776,12 +776,6 @@
         "url": "https://www.igdb.com/platforms/oculus-go"
     },
     {
-        "id": 388,
-        "name": "Gear VR",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plkj.png",
-        "url": "https://www.igdb.com/platforms/gear-vr"
-    },
-    {
         "id": 479,
         "name": "Terebikko / See 'n Say Video Phone",
         "url": "https://www.igdb.com/platforms/terebikko-slash-see-n-say-video-phone"
@@ -792,6 +786,13 @@
         "name": "Advanced Pico Beena",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plou.png",
         "url": "https://www.igdb.com/platforms/advanced-pico-beena"
+    },
+    {
+        "id": 508,
+        "generation": 9,
+        "name": "Nintendo Switch 2",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plow.png",
+        "url": "https://www.igdb.com/platforms/switch-2"
     },
     {
         "id": 21,
@@ -806,6 +807,13 @@
         "name": "Game Boy",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl7m.png",
         "url": "https://www.igdb.com/platforms/gb"
+    },
+    {
+        "id": 137,
+        "generation": 8,
+        "name": "New Nintendo 3DS",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl6j.png",
+        "url": "https://www.igdb.com/platforms/new-3ds"
     },
     {
         "id": 38,
@@ -890,13 +898,6 @@
         "url": "https://www.igdb.com/platforms/nuon"
     },
     {
-        "id": 137,
-        "generation": 8,
-        "name": "New Nintendo 3DS",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl6j.png",
-        "url": "https://www.igdb.com/platforms/new-nintendo-3ds"
-    },
-    {
         "id": 141,
         "name": "AY-3-8610",
         "url": "https://www.igdb.com/platforms/ay-3-8610"
@@ -908,11 +909,16 @@
         "url": "https://www.igdb.com/platforms/stadia"
     },
     {
-        "id": 508,
-        "generation": 9,
-        "name": "Nintendo Switch 2",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plow.png",
-        "url": "https://www.igdb.com/platforms/switch-2"
+        "id": 388,
+        "name": "Gear VR",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plkj.png",
+        "url": "https://www.igdb.com/platforms/gear-vr"
+    },
+    {
+        "id": 372,
+        "name": "OOParts",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plgi.png",
+        "url": "https://www.igdb.com/platforms/ooparts"
     },
     {
         "id": 203,
@@ -926,40 +932,15 @@
         "url": "https://www.igdb.com/platforms/daydream"
     },
     {
-        "id": 100,
-        "name": "Analogue electronics",
-        "url": "https://www.igdb.com/platforms/analogueelectronics"
-    },
-    {
-        "id": 372,
-        "name": "OOParts",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plgi.png",
-        "url": "https://www.igdb.com/platforms/ooparts"
-    },
-    {
-        "id": 378,
-        "generation": 4,
-        "name": "Gamate",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plhf.png",
-        "url": "https://www.igdb.com/platforms/gamate"
-    },
-    {
         "id": 380,
         "name": "Casio Loopy",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plkm.png",
         "url": "https://www.igdb.com/platforms/casio-loopy"
     },
     {
-        "id": 381,
-        "generation": 9,
-        "name": "Playdate",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plgx.png",
-        "url": "https://www.igdb.com/platforms/playdate"
-    },
-    {
-        "id": 411,
-        "name": "Handheld Electronic LCD",
-        "url": "https://www.igdb.com/platforms/handheld-electronic-lcd"
+        "id": 100,
+        "name": "Analogue electronics",
+        "url": "https://www.igdb.com/platforms/analogueelectronics"
     },
     {
         "id": 415,
@@ -982,6 +963,13 @@
         "url": "https://www.igdb.com/platforms/digiblast"
     },
     {
+        "id": 381,
+        "generation": 9,
+        "name": "Playdate",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plgx.png",
+        "url": "https://www.igdb.com/platforms/playdate"
+    },
+    {
         "id": 509,
         "name": "Polymega",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plox.png",
@@ -992,6 +980,13 @@
         "name": "ZX Spectrum",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plab.png",
         "url": "https://www.igdb.com/platforms/zxs"
+    },
+    {
+        "id": 378,
+        "generation": 4,
+        "name": "Gamate",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plhf.png",
+        "url": "https://www.igdb.com/platforms/gamate"
     },
     {
         "id": 27,
@@ -1007,11 +1002,11 @@
         "url": "https://www.igdb.com/platforms/3ds"
     },
     {
-        "id": 50,
-        "generation": 5,
-        "name": "3DO Interactive Multiplayer",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl7u.png",
-        "url": "https://www.igdb.com/platforms/3do"
+        "id": 169,
+        "generation": 9,
+        "name": "Xbox Series X|S",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plfl.png",
+        "url": "https://www.igdb.com/platforms/series-x-s"
     },
     {
         "id": 64,
@@ -1077,9 +1072,11 @@
         "url": "https://www.igdb.com/platforms/pokemon-mini"
     },
     {
-        "id": 236,
-        "name": "Exidy Sorcerer",
-        "url": "https://www.igdb.com/platforms/exidy-sorcerer"
+        "id": 50,
+        "generation": 5,
+        "name": "3DO Interactive Multiplayer",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl7u.png",
+        "url": "https://www.igdb.com/platforms/3do"
     },
     {
         "id": 238,
@@ -1108,11 +1105,14 @@
         "url": "https://www.igdb.com/platforms/pc-fx"
     },
     {
-        "id": 169,
-        "generation": 9,
-        "name": "Xbox Series X|S",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plfl.png",
-        "url": "https://www.igdb.com/platforms/series-x-s"
+        "id": 411,
+        "name": "Handheld Electronic LCD",
+        "url": "https://www.igdb.com/platforms/handheld"
+    },
+    {
+        "id": 236,
+        "name": "Exidy Sorcerer",
+        "url": "https://www.igdb.com/platforms/exidy-sorcerer"
     },
     {
         "id": 405,
@@ -1160,24 +1160,10 @@
         "url": "https://www.igdb.com/platforms/leaptv"
     },
     {
-        "id": 416,
-        "generation": 5,
-        "name": "64DD",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plj8.png",
-        "url": "https://www.igdb.com/platforms/64dd"
-    },
-    {
         "id": 417,
         "name": "Palm OS",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plj9.png",
         "url": "https://www.igdb.com/platforms/palm-os"
-    },
-    {
-        "id": 438,
-        "generation": 8,
-        "name": "Arduboy",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plk6.png",
-        "url": "https://www.igdb.com/platforms/arduboy"
     },
     {
         "id": 439,
@@ -1246,6 +1232,13 @@
         "url": "https://www.igdb.com/platforms/amiga"
     },
     {
+        "id": 68,
+        "generation": 2,
+        "name": "ColecoVision",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl8n.png",
+        "url": "https://www.igdb.com/platforms/colecovision"
+    },
+    {
         "id": 25,
         "name": "Amstrad CPC",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plnh.png",
@@ -1276,6 +1269,20 @@
         "url": "https://www.igdb.com/platforms/arcade"
     },
     {
+        "id": 416,
+        "generation": 5,
+        "name": "64DD",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plj8.png",
+        "url": "https://www.igdb.com/platforms/64dd"
+    },
+    {
+        "id": 438,
+        "generation": 8,
+        "name": "Arduboy",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plk6.png",
+        "url": "https://www.igdb.com/platforms/arduboy"
+    },
+    {
         "id": 59,
         "generation": 2,
         "name": "Atari 2600",
@@ -1283,11 +1290,30 @@
         "url": "https://www.igdb.com/platforms/atari2600"
     },
     {
-        "id": 68,
-        "generation": 2,
-        "name": "ColecoVision",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl8n.png",
-        "url": "https://www.igdb.com/platforms/colecovision"
+        "id": 90,
+        "name": "Commodore PET",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plf3.png",
+        "url": "https://www.igdb.com/platforms/cpet"
+    },
+    {
+        "id": 126,
+        "name": "TRS-80",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plac.png",
+        "url": "https://www.igdb.com/platforms/trs-80"
+    },
+    {
+        "id": 130,
+        "generation": 8,
+        "name": "Nintendo Switch",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plgu.png",
+        "url": "https://www.igdb.com/platforms/switch"
+    },
+    {
+        "id": 159,
+        "generation": 7,
+        "name": "Nintendo DSi",
+        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl6u.png",
+        "url": "https://www.igdb.com/platforms/nintendo-dsi"
     },
     {
         "id": 487,
@@ -1295,32 +1321,5 @@
         "name": "LaserActive",
         "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plo4.png",
         "url": "https://www.igdb.com/platforms/laseractive"
-    },
-    {
-        "id": 4,
-        "generation": 5,
-        "name": "Nintendo 64",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl78.png",
-        "url": "https://www.igdb.com/platforms/n64"
-    },
-    {
-        "id": 14,
-        "name": "Mac",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/plo3.png",
-        "url": "https://www.igdb.com/platforms/mac"
-    },
-    {
-        "id": 19,
-        "generation": 4,
-        "name": "Super Nintendo Entertainment System",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/ifw2tvdkynyxayquiyk4.png",
-        "url": "https://www.igdb.com/platforms/snes"
-    },
-    {
-        "id": 49,
-        "generation": 8,
-        "name": "Xbox One",
-        "platform_logo": "https://images.igdb.com/igdb/image/upload/t_logo_med/pl95.png",
-        "url": "https://www.igdb.com/platforms/xboxone"
     }
 ]

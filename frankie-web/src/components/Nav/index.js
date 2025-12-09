@@ -12,6 +12,7 @@ export default function Nav() {
         <button onClick={() => setCurrentSession('games')}>🎮</button>
         <button onClick={() => setCurrentSession('books')}>📚</button>
         <button onClick={() => setCurrentSession('whishList')}>🛒</button>
+        <button onClick={() => setCurrentSession('guitar-studies')}>🎸</button>
       </div>
     </NavWrapper>
   )

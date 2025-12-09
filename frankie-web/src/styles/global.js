@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     --yellow-alt:#fbf6d0;
     --green: #00B98D;
     --green-alt:#79c3aa;
+    --black-alt: #151515;
     /* --background:#1f0e1a; */
     --background: #282A36;
   }

@@ -5,6 +5,7 @@ const { Router } = require('express');
 const GamesController = require('./controllers/GamesController');
 const BooksController = require('./controllers/BooksController');
 const ListController = require('./controllers/ListController');
+const GuitarStudiesController = require('./controllers/GuitarController');
 
 const routes = Router();
 
@@ -19,6 +20,11 @@ routes.patch('/games', GamesController.patch);
 routes.get('/books', BooksController.get);
 routes.post('/books', BooksController.post);
 routes.patch('/books', BooksController.patch);
+
+routes.get('/guitar', GuitarStudiesController.get);
+routes.post('/guitar', GuitarStudiesController.post);
+// routes.patch('/guitar', GuitarStudiesController.patch);
+// routes.delete('/guitar/:id', GuitarStudiesController.delete);
 
 // routes.get('/movies/genres', MoviesController.getGenres);
 // routes.get('/movies', MoviesController.get);

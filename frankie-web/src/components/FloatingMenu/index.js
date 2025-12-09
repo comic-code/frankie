@@ -5,7 +5,6 @@ import { FMContainer, FMIcon, FMMainButton, FMMainIcon, FMMenuButton, FMMenuWrap
 export default function FloatingMenu({  }) {
   const [open, setOpen] = useState(false);
   const options = [
-    // { label: 'Home', icon: '🏠', onClick: () => window.location.href = '/' },
     { label: '', icon: '💰', onClick: () => alert('Buscar') },
     { label: '', icon: '🎮', onClick: () => alert('Perfil') },
     { label: '', icon: '📚', onClick: () => alert('Perfil') },
