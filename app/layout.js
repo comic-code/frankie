@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="pt-BR" className={`${kodeMono.variable} h-full antialiased`}>
       <body className="min-h-full bg-bg font-mono text-fg">
         <Sidebar />
-        <main className="min-h-screen px-6 py-4 md:pl-28">{children}</main>
+        <main className="min-h-dvh px-6 py-4 md:pl-28">{children}</main>
       </body>
     </html>
   );

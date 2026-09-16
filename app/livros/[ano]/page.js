@@ -28,10 +28,10 @@ export default async function LivrosDoAno({ params }) {
   const read = books.filter((book) => book.done);
 
   return (
-    <div className="mx-auto w-fit">
+    <div className="mx-auto flex h-[calc(100dvh-2rem)] w-fit flex-col">
       <SectionHeader
         title="Livros"
-        subtitle={`${books.length} livros em ${ano} · ${read.length} lidos`}
+        subtitle={`${books.length} em ${ano} · ${read.length} lidos`}
         tone="green"
       >
         <YearPicker section="livros" years={years} current={ano} />

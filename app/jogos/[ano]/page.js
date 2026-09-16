@@ -32,10 +32,10 @@ export default async function JogosDoAno({ params }) {
   const finished = games.filter((game) => game.done);
 
   return (
-    <div className="mx-auto w-fit">
+    <div className="mx-auto flex h-[calc(100dvh-2rem)] w-fit flex-col">
       <SectionHeader
         title="Jogos"
-        subtitle={`${games.length} jogos em ${ano} · ${finished.length} zerados`}
+        subtitle={`${games.length} em ${ano} · ${finished.length} zerados`}
         tone="orange"
       >
         <YearPicker section="jogos" years={years} current={ano} />
