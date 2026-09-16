@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// Mesma ideia da Nav antiga (faixa branca, borda laranja, emoji), mas com as
-// seções que sobreviveram: jogos e livros. Guitar entra depois.
+// Seções disponíveis no painel. Novas seções entram como rota própria.
 const LINKS = [
   { href: "/jogos", icon: "🎮", label: "Jogos" },
   { href: "/livros", icon: "📚", label: "Livros" },

@@ -10,8 +10,8 @@ import { getOptions } from "@/lib/writes";
 import { currentYear } from "@/lib/format";
 
 // ISR: cada ano é uma página cacheada, revalidada a cada 5 min — a lista
-// responde quase instantâneo e ainda pega o que você editar no Notion.
-// Toda escrita chama revalidatePath, então o que você muda no painel aparece na hora.
+// responde quase instantâneo e ainda reflete edições feitas direto no Notion.
+// Toda escrita chama revalidatePath, então alterações pelo painel aparecem na hora.
 export const revalidate = 300;
 
 // os anos que já existem no Notion viram páginas estáticas no build;

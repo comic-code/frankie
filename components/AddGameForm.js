@@ -2,8 +2,8 @@ import { Suspense } from "react";
 import { createGameAction } from "@/app/actions";
 import GameSearch from "./GameSearch";
 
-// Adicionar jogo: busca no IGDB em cima, formulário manual embaixo (pra jogo que
-// não está no IGDB ou quando você já tem a capa na mão).
+// Adicionar jogo: busca no IGDB em cima, formulário manual embaixo (para títulos
+// ausentes no IGDB ou quando a capa já é conhecida).
 // Aberto por padrão: adicionar é a ação principal da página.
 export default function AddGameForm({ ano, genres, existing = [] }) {
   return (

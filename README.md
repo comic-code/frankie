@@ -1,120 +1,161 @@
 # Frankie
 
-Painel pessoal — **jogos** e **livros** — que lê e escreve direto nas tabelas do Notion.
-Substitui o par `frankie-web` (CRA) + `frankie-server` (Express), que vivia em
-`C:\Github\Fun\frankie` e está congelado como histórico.
+Aplicação web para acompanhar **jogos** e **livros** organizados por ano, usando o
+Notion como banco de dados.
+
+## Visão geral
+
+Cada ano corresponde a uma tabela no Notion com o nome no padrão `ANO - Categoria`
+(por exemplo, `2026 - Jogos` ou `2026 - Livros`). A aplicação descobre essas tabelas
+automaticamente pela API — não há configuração por ano — e monta o seletor de anos a
+partir do que existir na conta.
+
+Funcionalidades:
+
+- listagem por ano, com seletor dos anos disponíveis;
+- criação de itens, com busca integrada no IGDB (jogos) ou preenchimento manual;
+- edição na própria linha: nome, nota, lançamento, autor, gêneros e notas ou citação;
+- situação "zerado/lido" com data automática e marcação de 100% (jogos);
+- escrita permitida apenas no ano corrente; anos anteriores são somente leitura;
+- autenticação por senha única, com sessão persistente.
 
 ## Stack
 
-- **Next.js 16** (App Router, Server Components) + React 19
-- **JavaScript** (sem TS por enquanto — shapes documentados via JSDoc em `lib/notion.js`)
-- **Tailwind v4** — paleta do app antigo, 1:1, em `app/globals.css` (`@theme`)
-- **Notion** como banco (`@notionhq/client`), fonte de verdade das duas tabelas
+| Camada | Tecnologia |
+| --- | --- |
+| Framework | Next.js 16 (App Router, Server Components, Server Actions) |
+| Interface | React 19 + Tailwind CSS v4 |
+| Linguagem | JavaScript, com formatos de dados documentados em JSDoc |
+| Dados | Notion, via `@notionhq/client` |
+| Busca de jogos | IGDB, autenticado por client credentials do Twitch |
 
-## Rodar
+## Requisitos
+
+- Node.js 20 ou superior
+- Integração do Notion com acesso às tabelas utilizadas
+- Credenciais de aplicação Twitch, para a busca no IGDB
+
+## Configuração
+
+Criar o arquivo `.env.local` na raiz do projeto (ignorado pelo git):
+
+```
+NOTION_TOKEN=          # token da integração do Notion
+TWITCH_CLIENT_ID=      # IGDB
+TWITCH_CLIENT_SECRET=
+APP_PASSWORD=          # senha de acesso ao painel
+AUTH_SECRET=           # valor aleatório (32+ bytes) usado para assinar a sessão
+# GATE=off             # desativa a autenticação (apenas em desenvolvimento)
+```
+
+## Execução
 
 ```bash
 npm install
-npm run dev          # usa --webpack (Turbopack corrompe em hot-reload longo no Windows)
-```
-
-`.env.local` (não versionado — `.env*` está no `.gitignore`):
-
-```
-NOTION_TOKEN=          # só isso basta: as tabelas são descobertas pela API
-TWITCH_CLIENT_ID=      # IGDB, pra busca de jogos (F3)
-TWITCH_CLIENT_SECRET=
-APP_PASSWORD=          # senha do painel (gate de login)
-AUTH_SECRET=           # aleatório, 32+ bytes: assina o cookie de sessão
-# GATE=off             # desliga o login (só pra teste local)
+npm run dev     # modo desenvolvimento (usa --webpack; ver Notas)
+npm run build
+npm run lint
 ```
 
 ## Estrutura
 
 ```
 app/
-  layout.js          # fonte Kode Mono, tema, sidebar
-  page.js            # redireciona pra /jogos
-  jogos/page.js      # redireciona pro ano mais recente de jogos
-  jogos/[ano]/page.js    # lista de jogos daquele ano (ISR 5 min)
-  livros/page.js     # idem, pra livros
+  layout.js              # fonte, tema e navegação
+  page.js                # redireciona para /jogos
+  jogos/page.js          # redireciona para o ano mais recente
+  jogos/[ano]/page.js    # lista de jogos do ano (ISR de 5 min)
+  livros/page.js         # equivalente, para livros
   livros/[ano]/page.js
-  login/page.js      # tela de senha
-  login/actions.js   # confere a senha e seta o cookie de sessão
-  actions.js         # Server Actions de escrita (criar, nota, zerado, etc)
-  error.js           # boundary: erro de Notion não derruba a página
-  globals.css        # paleta + animações do app antigo
-proxy.js             # gate de login (Next 16: era middleware.js)
+  login/page.js          # tela de senha
+  login/actions.js       # valida a senha e emite o cookie de sessão
+  actions.js             # Server Actions de escrita
+  api/games/search/      # Route Handler da busca no IGDB
+  error.js               # boundary de erro da página
+  globals.css            # paleta de cores e animações
+proxy.js                 # autenticação (convenção "proxy" do Next 16)
 components/
-  Sidebar.js         # a Nav antiga, agora com rotas reais
-  SectionHeader.js   # barra colorida do topo (o ListHeader antigo)
-  MediaList.js       # a coluna de 40rem (o ListWrapper antigo)
-  YearPicker.js      # seletor de ano (só links: cada ano é uma página)
-  GroupLabel.js      # divisor "zerados" / "lidos"
-  AddGameForm.js     # formulário de criação (jogo)
-  AddBookForm.js     # formulário de criação (livro)
-  GameRow.js         # linha de jogo
-  BookRow.js         # linha de livro
-  Poster.js          # capa 5rem×109px
-  GenreTag.js        # chip de gênero (cor vem do Notion)
+  Sidebar.js             # navegação lateral
+  SectionHeader.js       # cabeçalho da seção, com seletor de ano
+  MediaList.js           # contêiner da lista, com rolagem interna
+  YearPicker.js          # seletor de ano
+  GroupLabel.js          # divisor entre "em andamento" e "concluídos"
+  AddGameForm.js         # criação de jogo (busca no IGDB ou formulário manual)
+  AddBookForm.js         # criação de livro
+  GameSearch.js          # busca no IGDB com debounce
+  GameRow.js             # linha de jogo (leitura e edição)
+  BookRow.js             # linha de livro (leitura e edição)
+  Poster.js              # capa
+  GenreTag.js            # etiqueta de gênero
 lib/
-  notion.js          # leitura das tabelas (JSDoc: Game, Book) + descoberta por ano
-  writes.js          # escrita: criar/atualizar/arquivar + opções de rating/gênero
-  auth.js            # token do cookie de sessão (Web Crypto: vale no Edge e no Node)
-  notionColors.js    # as 10 cores do Notion → classes do Tailwind
-  format.js          # datas YYYY-MM-DD → DD/MM/AAAA (sem armadilha de fuso)
+  notion.js              # leitura e descoberta das tabelas (tipos em JSDoc)
+  writes.js              # criação, atualização e arquivamento de itens
+  igdb.js                # cliente do IGDB
+  auth.js                # emissão e verificação do cookie de sessão
+  notionColors.js        # nomes de cor do Notion para classes do Tailwind
+  format.js              # formatação de datas e fuso horário
 ```
 
-## Decisões que não são óbvias
+## Decisões de projeto
 
-- **Edição dentro da linha**: o modo leitura não tem nenhuma ação além do botão
-  `editar` — nome, nota, lançamento/autor, gêneros, notas/citação, zerado e 🏆 só
-  mudam dentro da edição, com `salvar` e `cancelar`. A nota aparece uma vez só.
-- **Só o ano corrente aceita escrita**: anos anteriores são arquivo (a página
-  avisa "só leitura" e não renderiza formulário nenhum). A regra é aplicada no
-  SERVIDOR (`assertEditable` em `app/actions.js`) — esconder botão é cosmético,
-  o POST direto na action continua possível e por isso é recusado lá.
-- **`done_date` só é reescrita quando zerado/lido muda de estado**: o formulário
-  manda o valor anterior em campos escondidos (`doneBefore`/`achievementsBefore`);
-  sem isso, editar o nome de um jogo já zerado reescreveria a data pra hoje.
-- **Gate de login em `proxy.js`** (Next 16 renomeou `middleware.js`): cookie
-  `HttpOnly` + `Secure` + `SameSite=Lax` com `expiraEm.assinatura HMAC`, validade
-  de 180 dias. Senha comparada por digest em tempo constante. Falha fechada: sem
-  `APP_PASSWORD` configurada, bloqueia tudo (em vez de abrir por esquecimento).
-- **Escrita por formulários nativos + Server Actions**, não por fetch/JSON: o
-  painel funciona sem JavaScript (a única ilha de JS é o select que salva
-  sozinho). Ganho colateral: dá pra testar cada ação com um POST multipart.
-- **`done_date` no fuso de Brasília**: no server da Vercel o relógio é UTC, e
-  "zerado hoje" às 22h viraria o dia seguinte.
-- **Capa sempre como URL externa** (`external`, nunca `file`): arquivo enviado
-  pro Notion gera URL assinada que expira em ~1h. Por isso o `revalidate = 300`
-  também serve pra manter as capas vivas.
-- **Descobrir as tabelas pela API**, não por env var: `lib/notion.js` faz `search` e
-  lê o padrão `ANO - Categoria` do título. Criou `2027 - Jogos` no Notion? Aparece
-  sozinho, sem deploy. (As env `NOTION_GAMES`/`NOTION_BOOKS` viraram história.)
-- **Cada ano é uma página** (`/jogos/2026`) com `generateStaticParams`: os anos que
-  existem viram HTML estático no build, e um ano novo é renderizado na primeira
-  visita e cacheado.
-- **`<img>` em vez de `next/image`** nas capas: as URLs já são externas e estáveis
-  (IGDB/Amazon) e o otimizador da Vercel tem cota no plano free.
-- **`revalidate = 300`**: a página é cacheada e ainda pega o que você editar no
-  Notion pelo celular. Sem isso, cada visita pagaria a latência do Notion
-  (437ms–1s medidos).
-- **Datas formatadas da string**, não via `new Date()`: no server da Vercel o
-  relógio é UTC e `new Date("2024-01-15")` mostraria 14/01.
-- **`cover()` aceita os dois tipos de arquivo** (`external` e `file`): o controller
-  antigo só lia `external.url` e quebrava com TypeError se a capa fosse upload do Notion.
-- **Paginação**: a API do Notion devolve 100 por página; o código antigo lia só a
-  primeira e perdia o resto em silêncio. `queryAll()` percorre os cursores.
+- **Descoberta das tabelas pela API.** `lib/notion.js` consulta as tabelas
+  compartilhadas com a integração e interpreta o padrão `ANO - Categoria` do
+  título. Uma tabela nova passa a aparecer sem alteração de código ou de
+  configuração.
+- **Uma página por ano** (`/jogos/2026`), com `generateStaticParams`: os anos
+  existentes são gerados estaticamente no build e um ano novo é renderizado na
+  primeira visita e passa a ser cacheado.
+- **Revalidação a cada 5 minutos** (`revalidate = 300`). A página é servida de
+  cache e ainda assim reflete edições feitas no Notion; toda escrita feita pela
+  própria aplicação dispara `revalidatePath`.
+- **Escrita por formulários nativos e Server Actions**, sem chamadas `fetch` para
+  a própria API. A interface funciona sem JavaScript, com exceção da busca no
+  IGDB. As ações podem ser verificadas por requisições `POST` multipart.
+- **Edição na própria linha.** O modo de leitura não oferece ações além do botão
+  de edição; nome, nota, lançamento, autor, gêneros, notas, situação e 100% são
+  alterados em um formulário com "salvar" e "cancelar".
+- **Escrita restrita ao ano corrente.** Anos anteriores são tratados como arquivo:
+  a página não renderiza formulários e a regra é validada no servidor
+  (`assertEditable`, em `app/actions.js`), não apenas na interface.
+- **A data de conclusão só é reescrita quando a situação muda.** O formulário
+  envia o estado anterior em campos ocultos, evitando que uma edição de nome
+  redefina a data de um item já concluído.
+- **Datas formatadas a partir da string** (`YYYY-MM-DD`), sem `new Date()`, e fuso
+  horário fixo em `America/Sao_Paulo`. Em servidores com relógio em UTC, a
+  conversão ingênua exibiria o dia anterior.
+- **Capas sempre como URL externa.** Arquivos enviados ao Notion geram URLs
+  assinadas com validade aproximada de uma hora; a URL externa mantém o cache
+  das páginas consistente.
+- **Paginação explícita.** A API do Notion devolve no máximo 100 registros por
+  página; `queryAll()` percorre os cursores até o fim.
+- **`<img>` em vez de `next/image`** nas capas: as URLs já são externas e
+  estáveis, e o otimizador de imagens tem cota no plano gratuito de hospedagem.
+- **Autenticação por senha única.** O cookie de sessão é `HttpOnly`, `Secure` e
+  `SameSite=Lax`, com validade de 180 dias, e contém apenas um valor assinado por
+  HMAC. A senha é comparada por digest, em tempo constante. Sem `APP_PASSWORD`
+  configurada, a aplicação bloqueia o acesso em vez de liberá-lo.
+
+## Notas
+
+Armadilhas encontradas durante o desenvolvimento, registradas para consulta:
+
+- No Next.js 16, a convenção `middleware.js` foi substituída por `proxy.js`.
+- Server Actions exigem o cabeçalho `Origin` em requisições feitas por JavaScript;
+  o próprio framework rejeita chamadas de origem cruzada.
+- No App Router, pastas com prefixo `_` são privadas e não geram rota.
+- A versão atual da API do Notion trabalha com *data sources*; `databases.query`
+  não existe mais no cliente v5. O identificador usado nas consultas é o da fonte
+  de dados, obtido em `databases.retrieve`.
+- O IGDB descontinuou o campo `category` (substituído por `game_type`). Filtros
+  pelo nome antigo não retornam erro, apenas resultado vazio.
+- O Turbopack apresenta instabilidade em sessões longas de hot-reload no Windows,
+  por isso o script de desenvolvimento usa `--webpack`.
 
 ## Roadmap
 
-- [x] **F1** — leitura de jogos e livros, tema e rotas
-- [x] **F1.2** — seletor de ano (descobre as tabelas `ANO - Categoria` sozinho)
-- [x] **F2** — escrita (Server Actions): criar item, rating, done + `done_date`,
-      gêneros, notas/citação, `done_achievements`; `revalidatePath` depois
-- [x] **F2.5** — gate de login (senha + cookie de 180 dias)
-- [ ] **F2.6** — proxy de capa `/api/capa/[id]` (cobre arquivo hospedado no Notion,
-      que hoje depende do ISR revalidar antes da URL vencer)
-- [ ] **F3** — busca no IGDB (`/api/games/search` + debounce) pra adicionar jogo
-- [ ] **F4** — deploy na Vercel + env vars- [ ] **F5** — guitar (só depois; o vault `guitar-guide` + Guitar Paths cobrem melhor)
+- [x] Leitura de jogos e livros, com seleção de ano
+- [x] Escrita por Server Actions (criação, edição, situação, notas e gêneros)
+- [x] Autenticação com sessão persistente
+- [x] Busca de jogos no IGDB
+- [ ] Publicação (deploy) e variáveis de ambiente em produção
+- [ ] Proxy de imagem para capas hospedadas no Notion
