@@ -4,7 +4,9 @@ import MediaList from "@/components/MediaList";
 import GroupLabel from "@/components/GroupLabel";
 import BookRow from "@/components/BookRow";
 import YearPicker from "@/components/YearPicker";
+import AddBookForm from "@/components/AddBookForm";
 import { getBooks, getYears } from "@/lib/notion";
+import { getOptions } from "@/lib/writes";
 
 export const revalidate = 300;
 
@@ -20,7 +22,11 @@ export async function generateMetadata({ params }) {
 
 export default async function LivrosDoAno({ params }) {
   const { ano } = await params;
-  const [books, years] = await Promise.all([getBooks(ano), getYears("livros")]);
+  const [books, years, options] = await Promise.all([
+    getBooks(ano),
+    getYears("livros"),
+    getOptions("livros", ano),
+  ]);
 
   if (!books) notFound();
 
@@ -36,16 +42,19 @@ export default async function LivrosDoAno({ params }) {
       >
         <YearPicker section="livros" years={years} current={ano} />
       </SectionHeader>
+
+      <AddBookForm ano={ano} genres={options.genres} />
+
       <MediaList
         empty={`Nenhum livro cadastrado em ${ano}.`}
         note="lido do Notion · revalida a cada 5 min"
       >
         {reading.map((book) => (
-          <BookRow key={book.id} book={book} />
+          <BookRow key={book.id} book={book} ano={ano} ratings={options.ratings} />
         ))}
         {read.length > 0 ? <GroupLabel>✔ lidos ({read.length})</GroupLabel> : null}
         {read.map((book) => (
-          <BookRow key={book.id} book={book} />
+          <BookRow key={book.id} book={book} ano={ano} ratings={options.ratings} />
         ))}
       </MediaList>
     </div>

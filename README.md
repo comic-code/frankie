@@ -24,6 +24,9 @@ npm run dev          # usa --webpack (Turbopack corrompe em hot-reload longo no 
 NOTION_TOKEN=          # só isso basta: as tabelas são descobertas pela API
 TWITCH_CLIENT_ID=      # IGDB, pra busca de jogos (F3)
 TWITCH_CLIENT_SECRET=
+APP_PASSWORD=          # senha do painel (gate de login)
+AUTH_SECRET=           # aleatório, 32+ bytes: assina o cookie de sessão
+# GATE=off             # desliga o login (só pra teste local)
 ```
 
 ## Estrutura
@@ -36,27 +39,48 @@ app/
   jogos/[ano]/page.js    # lista de jogos daquele ano (ISR 5 min)
   livros/page.js     # idem, pra livros
   livros/[ano]/page.js
+  login/page.js      # tela de senha
+  login/actions.js   # confere a senha e seta o cookie de sessão
+  actions.js         # Server Actions de escrita (criar, nota, zerado, etc)
   error.js           # boundary: erro de Notion não derruba a página
   globals.css        # paleta + animações do app antigo
+proxy.js             # gate de login (Next 16: era middleware.js)
 components/
   Sidebar.js         # a Nav antiga, agora com rotas reais
   SectionHeader.js   # barra colorida do topo (o ListHeader antigo)
   MediaList.js       # a coluna de 40rem (o ListWrapper antigo)
   YearPicker.js      # seletor de ano (só links: cada ano é uma página)
   GroupLabel.js      # divisor "zerados" / "lidos"
+  AddGameForm.js     # formulário de criação (jogo)
+  AddBookForm.js     # formulário de criação (livro)
+  RowActions.js      # nota, zerado, troféu e notas/citação de cada linha
+  AutoSubmitSelect.js # select que salva sozinho (única ilha de JS)
   GameRow.js         # linha de jogo
   BookRow.js         # linha de livro
   Poster.js          # capa 5rem×109px
   GenreTag.js        # chip de gênero (cor vem do Notion)
-  DoneBadge.js       # ✔ zerado/lido + data
 lib/
-  notion.js          # leitura das tabelas (JSDoc: Game, Book)
+  notion.js          # leitura das tabelas (JSDoc: Game, Book) + descoberta por ano
+  writes.js          # escrita: criar/atualizar/arquivar + opções de rating/gênero
+  auth.js            # token do cookie de sessão (Web Crypto: vale no Edge e no Node)
   notionColors.js    # as 10 cores do Notion → classes do Tailwind
   format.js          # datas YYYY-MM-DD → DD/MM/AAAA (sem armadilha de fuso)
 ```
 
 ## Decisões que não são óbvias
 
+- **Gate de login em `proxy.js`** (Next 16 renomeou `middleware.js`): cookie
+  `HttpOnly` + `Secure` + `SameSite=Lax` com `expiraEm.assinatura HMAC`, validade
+  de 180 dias. Senha comparada por digest em tempo constante. Falha fechada: sem
+  `APP_PASSWORD` configurada, bloqueia tudo (em vez de abrir por esquecimento).
+- **Escrita por formulários nativos + Server Actions**, não por fetch/JSON: o
+  painel funciona sem JavaScript (a única ilha de JS é o select que salva
+  sozinho). Ganho colateral: dá pra testar cada ação com um POST multipart.
+- **`done_date` no fuso de Brasília**: no server da Vercel o relógio é UTC, e
+  "zerado hoje" às 22h viraria o dia seguinte.
+- **Capa sempre como URL externa** (`external`, nunca `file`): arquivo enviado
+  pro Notion gera URL assinada que expira em ~1h. Por isso o `revalidate = 300`
+  também serve pra manter as capas vivas.
 - **Descobrir as tabelas pela API**, não por env var: `lib/notion.js` faz `search` e
   lê o padrão `ANO - Categoria` do título. Criou `2027 - Jogos` no Notion? Aparece
   sozinho, sem deploy. (As env `NOTION_GAMES`/`NOTION_BOOKS` viraram história.)
@@ -79,8 +103,11 @@ lib/
 
 - [x] **F1** — leitura de jogos e livros, tema e rotas
 - [x] **F1.2** — seletor de ano (descobre as tabelas `ANO - Categoria` sozinho)
-- [ ] **F2** — escrita (Server Actions): criar item, rating, done + `done_date`,
+- [x] **F2** — escrita (Server Actions): criar item, rating, done + `done_date`,
       gêneros, notas/citação, `done_achievements`; `revalidatePath` depois
+- [x] **F2.5** — gate de login (senha + cookie de 180 dias)
+- [ ] **F2.6** — proxy de capa `/api/capa/[id]` (cobre arquivo hospedado no Notion,
+      que hoje depende do ISR revalidar antes da URL vencer)
 - [ ] **F3** — busca no IGDB (`/api/games/search` + debounce) pra adicionar jogo
 - [ ] **F4** — deploy na Vercel + env vars
 - [ ] **F5** — guitar (só depois; o vault `guitar-guide` + Guitar Paths cobrem melhor)
