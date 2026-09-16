@@ -62,28 +62,38 @@ export async function toggleDoneAction(formData) {
   refresh(section, year);
 }
 
-/** Nota (jogos) / citação (livros) */
-export async function setTextAction(formData) {
-  const section = text(formData, "section");
+/** Edição completa da linha (nome, nota, lançamento, gêneros, notas) */
+export async function updateGameAction(formData) {
   const year = text(formData, "ano");
   const id = text(formData, "id");
-  const value = text(formData, "value");
+  const name = text(formData, "name");
+  if (!name) throw new Error("o jogo precisa de um nome");
 
-  if (section === "jogos") await updateGame(id, { notes: value });
-  else await updateBook(id, { quote: value });
-  refresh(section, year);
+  await updateGame(id, {
+    name,
+    rating: text(formData, "rating") || null,
+    release: text(formData, "release") || null,
+    genres: formData.getAll("genres").map(String),
+    notes: text(formData, "notes"),
+  });
+  refresh("jogos", year);
 }
 
-/** Nota de 0 a 5 (string igual à opção do Notion, ex: "4.5 / 5.0 ⭐️") */
-export async function setRatingAction(formData) {
-  const section = text(formData, "section");
+/** Edição completa da linha (título, autor, nota, gêneros, citação) */
+export async function updateBookAction(formData) {
   const year = text(formData, "ano");
   const id = text(formData, "id");
-  const rating = text(formData, "rating") || null;
+  const name = text(formData, "name");
+  if (!name) throw new Error("o livro precisa de um título");
 
-  if (section === "jogos") await updateGame(id, { rating });
-  else await updateBook(id, { rating });
-  refresh(section, year);
+  await updateBook(id, {
+    name,
+    author: text(formData, "author"),
+    rating: text(formData, "rating") || null,
+    genres: formData.getAll("genres").map(String),
+    quote: text(formData, "quote"),
+  });
+  refresh("livros", year);
 }
 
 /** 100% / platinado (só jogos) */

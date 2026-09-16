@@ -48,20 +48,20 @@ export default async function JogosDoAno({ params }) {
         <YearPicker section="jogos" years={years} current={ano} />
       </SectionHeader>
 
-      <AddGameForm ano={ano} genres={options.genres} />
+      <AddGameForm ano={ano} genres={options.genres} existing={games.map((game) => game.name)} />
 
       <MediaList
         empty={`Nenhum jogo cadastrado em ${ano}.`}
         note="lido do Notion · revalida a cada 5 min"
       >
         {playing.map((game) => (
-          <GameRow key={game.id} game={game} ano={ano} ratings={options.ratings} />
+          <GameRow key={game.id} game={game} ano={ano} ratings={options.ratings} genres={options.genres} />
         ))}
         {finished.length > 0 ? (
           <GroupLabel>✔ zerados ({finished.length})</GroupLabel>
         ) : null}
         {finished.map((game) => (
-          <GameRow key={game.id} game={game} ano={ano} ratings={options.ratings} />
+          <GameRow key={game.id} game={game} ano={ano} ratings={options.ratings} genres={options.genres} />
         ))}
       </MediaList>
     </div>

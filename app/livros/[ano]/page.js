@@ -50,11 +50,11 @@ export default async function LivrosDoAno({ params }) {
         note="lido do Notion · revalida a cada 5 min"
       >
         {reading.map((book) => (
-          <BookRow key={book.id} book={book} ano={ano} ratings={options.ratings} />
+          <BookRow key={book.id} book={book} ano={ano} ratings={options.ratings} genres={options.genres} />
         ))}
         {read.length > 0 ? <GroupLabel>✔ lidos ({read.length})</GroupLabel> : null}
         {read.map((book) => (
-          <BookRow key={book.id} book={book} ano={ano} ratings={options.ratings} />
+          <BookRow key={book.id} book={book} ano={ano} ratings={options.ratings} genres={options.genres} />
         ))}
       </MediaList>
     </div>

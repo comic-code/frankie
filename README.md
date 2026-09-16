@@ -53,8 +53,7 @@ components/
   GroupLabel.js      # divisor "zerados" / "lidos"
   AddGameForm.js     # formulário de criação (jogo)
   AddBookForm.js     # formulário de criação (livro)
-  RowActions.js      # nota, zerado, troféu e notas/citação de cada linha
-  AutoSubmitSelect.js # select que salva sozinho (única ilha de JS)
+  RowActions.js      # os dois interruptores de um clique (zerado, 🏆)
   GameRow.js         # linha de jogo
   BookRow.js         # linha de livro
   Poster.js          # capa 5rem×109px
@@ -69,6 +68,11 @@ lib/
 
 ## Decisões que não são óbvias
 
+- **Edição dentro da linha**: fora da edição a linha mostra o dado e dois
+  interruptores de um clique (zerado e 🏆 — reversíveis e frequentes); o botão
+  `editar` abre o formulário na própria linha, com `salvar` e `cancelar`. Nome,
+  nota, lançamento/autor, gêneros e notas/citação ficam todos nesse modo, e a
+  nota aparece **uma vez só** (o valor bruto no modo leitura, o select na edição).
 - **Gate de login em `proxy.js`** (Next 16 renomeou `middleware.js`): cookie
   `HttpOnly` + `Secure` + `SameSite=Lax` com `expiraEm.assinatura HMAC`, validade
   de 180 dias. Senha comparada por digest em tempo constante. Falha fechada: sem
@@ -109,5 +113,4 @@ lib/
 - [ ] **F2.6** — proxy de capa `/api/capa/[id]` (cobre arquivo hospedado no Notion,
       que hoje depende do ISR revalidar antes da URL vencer)
 - [ ] **F3** — busca no IGDB (`/api/games/search` + debounce) pra adicionar jogo
-- [ ] **F4** — deploy na Vercel + env vars
-- [ ] **F5** — guitar (só depois; o vault `guitar-guide` + Guitar Paths cobrem melhor)
+- [ ] **F4** — deploy na Vercel + env vars- [ ] **F5** — guitar (só depois; o vault `guitar-guide` + Guitar Paths cobrem melhor)
