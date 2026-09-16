@@ -53,7 +53,6 @@ components/
   GroupLabel.js      # divisor "zerados" / "lidos"
   AddGameForm.js     # formulário de criação (jogo)
   AddBookForm.js     # formulário de criação (livro)
-  RowActions.js      # os dois interruptores de um clique (zerado, 🏆)
   GameRow.js         # linha de jogo
   BookRow.js         # linha de livro
   Poster.js          # capa 5rem×109px
@@ -68,11 +67,16 @@ lib/
 
 ## Decisões que não são óbvias
 
-- **Edição dentro da linha**: fora da edição a linha mostra o dado e dois
-  interruptores de um clique (zerado e 🏆 — reversíveis e frequentes); o botão
-  `editar` abre o formulário na própria linha, com `salvar` e `cancelar`. Nome,
-  nota, lançamento/autor, gêneros e notas/citação ficam todos nesse modo, e a
-  nota aparece **uma vez só** (o valor bruto no modo leitura, o select na edição).
+- **Edição dentro da linha**: o modo leitura não tem nenhuma ação além do botão
+  `editar` — nome, nota, lançamento/autor, gêneros, notas/citação, zerado e 🏆 só
+  mudam dentro da edição, com `salvar` e `cancelar`. A nota aparece uma vez só.
+- **Só o ano corrente aceita escrita**: anos anteriores são arquivo (a página
+  avisa "só leitura" e não renderiza formulário nenhum). A regra é aplicada no
+  SERVIDOR (`assertEditable` em `app/actions.js`) — esconder botão é cosmético,
+  o POST direto na action continua possível e por isso é recusado lá.
+- **`done_date` só é reescrita quando zerado/lido muda de estado**: o formulário
+  manda o valor anterior em campos escondidos (`doneBefore`/`achievementsBefore`);
+  sem isso, editar o nome de um jogo já zerado reescreveria a data pra hoje.
 - **Gate de login em `proxy.js`** (Next 16 renomeou `middleware.js`): cookie
   `HttpOnly` + `Secure` + `SameSite=Lax` com `expiraEm.assinatura HMAC`, validade
   de 180 dias. Senha comparada por digest em tempo constante. Falha fechada: sem

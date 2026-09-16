@@ -3,7 +3,6 @@
 import { useState, useTransition } from "react";
 import Poster from "./Poster";
 import GenreTag from "./GenreTag";
-import { AchievementsToggle, DoneToggle } from "./RowActions";
 import { formatDate } from "@/lib/format";
 import { updateGameAction } from "@/app/actions";
 
@@ -13,13 +12,13 @@ const chip =
 const short = (value) => value.replace(" / 5.0 ⭐️", "");
 
 /**
- * Linha de jogo. Fora da edição mostra o dado e dois interruptores de um clique
- * (zerado e 🏆); "editar" abre o modo de edição na própria linha, com salvar e
- * cancelar. Sem JavaScript ela continua renderizando o modo de leitura.
+ * Linha de jogo. No modo leitura não existe ação além de `editar` — zerado,
+ * 100%, nota, gêneros e notas só mudam dentro da edição (salvar/cancelar).
+ * `editable=false` (anos anteriores) deixa a linha só de visualização.
  *
- * @param {{ game: import("@/lib/notion").Game, ano: string|number, ratings: string[], genres: {name: string}[] }} props
+ * @param {{ game: import("@/lib/notion").Game, ano: string|number, ratings: string[], genres: {name: string}[], editable?: boolean }} props
  */
-export default function GameRow({ game, ano, ratings, genres: genreOptions }) {
+export default function GameRow({ game, ano, ratings, genres: genreOptions, editable = true }) {
   const [editing, setEditing] = useState(false);
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState(null);
@@ -48,6 +47,8 @@ export default function GameRow({ game, ano, ratings, genres: genreOptions }) {
           <form action={save} className="flex flex-col gap-2">
             <input type="hidden" name="ano" value={ano} />
             <input type="hidden" name="id" value={id} />
+            <input type="hidden" name="doneBefore" value={done ? "1" : "0"} />
+            <input type="hidden" name="achievementsBefore" value={doneAchievements ? "1" : "0"} />
 
             <input name="name" defaultValue={name} required className={input} />
 
@@ -102,6 +103,28 @@ export default function GameRow({ game, ano, ratings, genres: genreOptions }) {
               className={input}
             />
 
+            <div className="flex flex-wrap items-center gap-4 pt-1 text-xs text-fg/70">
+              <label className="flex cursor-pointer items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="done"
+                  defaultChecked={done}
+                  className="size-4 accent-green"
+                />
+                zerado
+                {doneDate ? <span className="text-fg/40">({formatDate(doneDate)})</span> : null}
+              </label>
+              <label className="flex cursor-pointer items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="achievements"
+                  defaultChecked={doneAchievements}
+                  className="size-4 accent-yellow"
+                />
+                100% / platinado
+              </label>
+            </div>
+
             {error ? <p className="text-xs text-orange">{error}</p> : null}
 
             <div className="flex gap-2">
@@ -134,13 +157,15 @@ export default function GameRow({ game, ano, ratings, genres: genreOptions }) {
                     {rating}
                   </span>
                 ) : null}
-                <button
-                  type="button"
-                  onClick={() => setEditing(true)}
-                  className="rounded-full border border-fg/20 px-2 py-0.5 text-xs text-fg/60 transition hover:border-fg/50 hover:text-fg"
-                >
-                  editar
-                </button>
+                {editable ? (
+                  <button
+                    type="button"
+                    onClick={() => setEditing(true)}
+                    className="flex items-center gap-1 rounded-lg bg-orange-alt px-2.5 py-1 text-xs font-bold text-white transition hover:bg-white hover:text-orange-alt"
+                  >
+                    ✎ editar
+                  </button>
+                ) : null}
               </div>
             </div>
 
@@ -160,15 +185,12 @@ export default function GameRow({ game, ano, ratings, genres: genreOptions }) {
                   {formatDate(release)}
                 </span>
               ) : null}
-              <DoneToggle
-                section="jogos"
-                ano={ano}
-                id={id}
-                done={done}
-                date={formatDate(doneDate)}
-                label="zerado"
-              />
-              <AchievementsToggle ano={ano} id={id} done={doneAchievements} />
+              {done ? (
+                <span className="rounded-full border border-green-alt/50 px-2 py-0.5 text-green-alt">
+                  ✔ zerado{doneDate ? ` ${formatDate(doneDate)}` : ""}
+                </span>
+              ) : null}
+              {doneAchievements ? <span title="100% / platinado">🏆</span> : null}
             </div>
           </>
         )}

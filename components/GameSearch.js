@@ -123,7 +123,7 @@ export default function GameSearch({ ano, genres, existing }) {
                 disabled={already}
                 title={already ? "já está na sua lista" : `adicionar ${game.name}`}
                 className={`rounded-lg border-2 border-bg px-2 py-1 text-xs font-bold transition ${
-                  already ? "bg-fg/10 text-fg/40" : "bg-green text-white hover:brightness-110"
+                  already ? "bg-fg/10 text-fg/40 cursor-not-allowed" : "bg-green text-white hover:brightness-110 cursor-pointer"
                 }`}
               >
                 {already ? "na lista" : "adicionar"}

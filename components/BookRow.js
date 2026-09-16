@@ -3,7 +3,6 @@
 import { useState, useTransition } from "react";
 import Poster from "./Poster";
 import GenreTag from "./GenreTag";
-import { DoneToggle } from "./RowActions";
 import { formatDate } from "@/lib/format";
 import { updateBookAction } from "@/app/actions";
 
@@ -13,9 +12,13 @@ const chip =
 const short = (value) => value.replace(" / 5.0 ⭐️", "");
 
 /**
- * @param {{ book: import("@/lib/notion").Book, ano: string|number, ratings: string[], genres: {name: string}[] }} props
+ * Linha de livro — mesma regra do jogo: no modo leitura só existe `editar`;
+ * lido, nota, gêneros e citação mudam dentro da edição. `editable=false`
+ * (anos anteriores) deixa a linha só de visualização.
+ *
+ * @param {{ book: import("@/lib/notion").Book, ano: string|number, ratings: string[], genres: {name: string}[], editable?: boolean }} props
  */
-export default function BookRow({ book, ano, ratings, genres: genreOptions }) {
+export default function BookRow({ book, ano, ratings, genres: genreOptions, editable = true }) {
   const [editing, setEditing] = useState(false);
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState(null);
@@ -43,6 +46,7 @@ export default function BookRow({ book, ano, ratings, genres: genreOptions }) {
           <form action={save} className="flex flex-col gap-2">
             <input type="hidden" name="ano" value={ano} />
             <input type="hidden" name="id" value={id} />
+            <input type="hidden" name="doneBefore" value={done ? "1" : "0"} />
 
             <input name="name" defaultValue={name} required className={input} />
             <input name="author" defaultValue={author} placeholder="autor" className={input} />
@@ -86,6 +90,17 @@ export default function BookRow({ book, ano, ratings, genres: genreOptions }) {
               className={input}
             />
 
+            <label className="flex w-fit cursor-pointer items-center gap-2 pt-1 text-xs text-fg/70">
+              <input
+                type="checkbox"
+                name="done"
+                defaultChecked={done}
+                className="size-4 accent-green"
+              />
+              lido
+              {doneDate ? <span className="text-fg/40">({formatDate(doneDate)})</span> : null}
+            </label>
+
             {error ? <p className="text-xs text-orange">{error}</p> : null}
 
             <div className="flex gap-2">
@@ -113,9 +128,6 @@ export default function BookRow({ book, ano, ratings, genres: genreOptions }) {
             <div className="flex items-start justify-between gap-4">
               <h2 className="text-lg leading-tight font-bold">
                 {name}
-                {author ? (
-                  <span className="ml-2 text-sm font-normal text-fg/60">{author}</span>
-                ) : null}
               </h2>
               <div className="flex shrink-0 items-center gap-2">
                 {rating ? (
@@ -123,15 +135,20 @@ export default function BookRow({ book, ano, ratings, genres: genreOptions }) {
                     {rating}
                   </span>
                 ) : null}
-                <button
-                  type="button"
-                  onClick={() => setEditing(true)}
-                  className="rounded-full border border-fg/20 px-2 py-0.5 text-xs text-fg/60 transition hover:border-fg/50 hover:text-fg"
-                >
-                  editar
-                </button>
+                {editable ? (
+                  <button
+                    type="button"
+                    onClick={() => setEditing(true)}
+                    className="flex items-center gap-1 rounded-lg bg-orange-alt px-2.5 py-1 text-xs font-bold text-white transition hover:bg-white hover:text-orange-alt"
+                  >
+                    ✎ editar
+                  </button>
+                ) : null}
               </div>
             </div>
+            {author ? (
+                <h3 className="text-sm font-normal text-fg/50">{author}</h3>
+                ) : null}
 
             {genres.length > 0 ? (
               <div className="anim-fade mt-2 flex flex-wrap gap-1">
@@ -148,14 +165,11 @@ export default function BookRow({ book, ano, ratings, genres: genreOptions }) {
             ) : null}
 
             <div className="mt-auto flex flex-wrap items-center gap-3 pt-3 text-xs">
-              <DoneToggle
-                section="livros"
-                ano={ano}
-                id={id}
-                done={done}
-                date={formatDate(doneDate)}
-                label="lido"
-              />
+              {done ? (
+                <span className="rounded-full border border-green-alt/50 px-2 py-0.5 text-green-alt">
+                  ✔ lido{doneDate ? ` ${formatDate(doneDate)}` : ""}
+                </span>
+              ) : null}
             </div>
           </>
         )}
