@@ -57,7 +57,7 @@ export default async function JogosDoAno({ params }) {
         />
       ) : (
         <p className="w-[40rem] max-w-full bg-black/20 px-4 py-2 text-xs text-fg/40">
-          ano arquivado — só visualização. O ano editável é {currentYear()}.
+          ano arquivado — apenas visualização.
         </p>
       )}
 

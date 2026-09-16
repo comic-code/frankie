@@ -181,7 +181,7 @@ export default function GameRow({ game, ano, ratings, genres: genreOptions, edit
 
             <div className="mt-auto flex flex-wrap items-center gap-3 pt-3 text-xs">
               {release ? (
-                <span className="font-bold text-pink" title="Lançamento">
+                <span className="font-bold text-white/40" title="Lançamento">
                   {formatDate(release)}
                 </span>
               ) : null}

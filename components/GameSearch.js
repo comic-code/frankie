@@ -19,11 +19,10 @@ export default function GameSearch({ ano, genres, existing }) {
 
   useEffect(() => {
     const term = query.trim();
-    if (term.length < 2) {
-      setResults([]);
-      setStatus("idle");
-      return;
-    }
+    // nada a fazer com menos de 2 letras: quem limpa o estado é o onChange,
+    // porque setState síncrono dentro de effect causa render em cascata
+    // (regra react-hooks/set-state-in-effect)
+    if (term.length < 2) return;
 
     // debounce: o IGDB leva ~2s por consulta, não vale disparar a cada letra
     const timer = setTimeout(async () => {
@@ -56,7 +55,14 @@ export default function GameSearch({ ano, genres, existing }) {
     <div className="flex flex-col gap-2 pb-2">
       <input
         value={query}
-        onChange={(event) => setQuery(event.target.value)}
+        onChange={(event) => {
+          const value = event.target.value;
+          setQuery(value);
+          if (value.trim().length < 2) {
+            setResults([]);
+            setStatus("idle");
+          }
+        }}
         placeholder="buscar no IGDB (2+ letras)..."
         className="rounded-lg border-2 border-bg bg-black/30 px-2 py-1 text-sm"
       />
