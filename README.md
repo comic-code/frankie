@@ -21,9 +21,7 @@ npm run dev          # usa --webpack (Turbopack corrompe em hot-reload longo no 
 `.env.local` (não versionado — `.env*` está no `.gitignore`):
 
 ```
-NOTION_TOKEN=
-NOTION_GAMES=     # tabela "2026 - Jogos"
-NOTION_BOOKS=     # tabela "2025 - Livros"
+NOTION_TOKEN=          # só isso basta: as tabelas são descobertas pela API
 TWITCH_CLIENT_ID=      # IGDB, pra busca de jogos (F3)
 TWITCH_CLIENT_SECRET=
 ```
@@ -34,14 +32,18 @@ TWITCH_CLIENT_SECRET=
 app/
   layout.js          # fonte Kode Mono, tema, sidebar
   page.js            # redireciona pra /jogos
-  jogos/page.js      # lista de jogos (ISR 5 min)
-  livros/page.js     # lista de livros (ISR 5 min)
+  jogos/page.js      # redireciona pro ano mais recente de jogos
+  jogos/[ano]/page.js    # lista de jogos daquele ano (ISR 5 min)
+  livros/page.js     # idem, pra livros
+  livros/[ano]/page.js
   error.js           # boundary: erro de Notion não derruba a página
   globals.css        # paleta + animações do app antigo
 components/
   Sidebar.js         # a Nav antiga, agora com rotas reais
   SectionHeader.js   # barra colorida do topo (o ListHeader antigo)
   MediaList.js       # a coluna de 40rem (o ListWrapper antigo)
+  YearPicker.js      # seletor de ano (só links: cada ano é uma página)
+  GroupLabel.js      # divisor "zerados" / "lidos"
   GameRow.js         # linha de jogo
   BookRow.js         # linha de livro
   Poster.js          # capa 5rem×109px
@@ -55,6 +57,12 @@ lib/
 
 ## Decisões que não são óbvias
 
+- **Descobrir as tabelas pela API**, não por env var: `lib/notion.js` faz `search` e
+  lê o padrão `ANO - Categoria` do título. Criou `2027 - Jogos` no Notion? Aparece
+  sozinho, sem deploy. (As env `NOTION_GAMES`/`NOTION_BOOKS` viraram história.)
+- **Cada ano é uma página** (`/jogos/2026`) com `generateStaticParams`: os anos que
+  existem viram HTML estático no build, e um ano novo é renderizado na primeira
+  visita e cacheado.
 - **`<img>` em vez de `next/image`** nas capas: as URLs já são externas e estáveis
   (IGDB/Amazon) e o otimizador da Vercel tem cota no plano free.
 - **`revalidate = 300`**: a página é cacheada e ainda pega o que você editar no
@@ -70,6 +78,7 @@ lib/
 ## Roadmap
 
 - [x] **F1** — leitura de jogos e livros, tema e rotas
+- [x] **F1.2** — seletor de ano (descobre as tabelas `ANO - Categoria` sozinho)
 - [ ] **F2** — escrita (Server Actions): criar item, rating, done + `done_date`,
       gêneros, notas/citação, `done_achievements`; `revalidatePath` depois
 - [ ] **F3** — busca no IGDB (`/api/games/search` + debounce) pra adicionar jogo

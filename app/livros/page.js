@@ -1,37 +1,21 @@
-import SectionHeader from "@/components/SectionHeader";
-import MediaList from "@/components/MediaList";
-import GroupLabel from "@/components/GroupLabel";
-import BookRow from "@/components/BookRow";
-import { getBooks } from "@/lib/notion";
+import { redirect } from "next/navigation";
+import { getYears } from "@/lib/notion";
 
+// /livros abre no ano mais recente que existir no Notion.
 export const revalidate = 300;
 
-export const metadata = { title: "Livros" };
-
-export default async function LivrosPage() {
-  const books = await getBooks();
-  const reading = books.filter((book) => !book.done);
-  const read = books.filter((book) => book.done);
-
-  return (
-    <div className="mx-auto w-fit">
-      <SectionHeader
-        title="Livros"
-        subtitle={`${books.length} livros · ${read.length} lidos`}
-        tone="green"
-      />
-      <MediaList
-        empty="Nenhum livro na lista."
-        note="lido do Notion · revalida a cada 5 min"
-      >
-        {reading.map((book) => (
-          <BookRow key={book.id} book={book} />
-        ))}
-        {read.length > 0 ? <GroupLabel>✔ lidos ({read.length})</GroupLabel> : null}
-        {read.map((book) => (
-          <BookRow key={book.id} book={book} />
-        ))}
-      </MediaList>
-    </div>
-  );
+export default async function LivrosIndex() {
+  const [latest] = await getYears("livros");
+  if (!latest) {
+    return (
+      <div className="mx-auto mt-24 w-[40rem] max-w-full rounded-lg border-2 border-green bg-bg-alt p-6">
+        <h1 className="text-xl font-bold text-green">Nenhuma tabela de livros encontrada</h1>
+        <p className="mt-2 text-sm text-fg/70">
+          Crie uma tabela chamada, por exemplo, <code>2027 - Livros</code> no Notion e
+          compartilhe com a integração. Ela aparece aqui sozinha.
+        </p>
+      </div>
+    );
+  }
+  redirect(`/livros/${latest}`);
 }

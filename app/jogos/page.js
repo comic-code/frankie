@@ -1,41 +1,21 @@
-import SectionHeader from "@/components/SectionHeader";
-import MediaList from "@/components/MediaList";
-import GroupLabel from "@/components/GroupLabel";
-import GameRow from "@/components/GameRow";
-import { getGames } from "@/lib/notion";
+import { redirect } from "next/navigation";
+import { getYears } from "@/lib/notion";
 
-// ISR: a página é cacheada e revalidada a cada 5 min — a lista responde quase
-// instantâneo e ainda assim pega o que você editar no Notion pelo celular.
+// /jogos abre no ano mais recente que existir no Notion.
 export const revalidate = 300;
 
-export const metadata = { title: "Jogos" };
-
-export default async function JogosPage() {
-  const games = await getGames();
-  const playing = games.filter((game) => !game.done);
-  const finished = games.filter((game) => game.done);
-
-  return (
-    <div className="mx-auto w-fit">
-      <SectionHeader
-        title="Jogos"
-        subtitle={`${games.length} jogos · ${finished.length} zerados`}
-        tone="orange"
-      />
-      <MediaList
-        empty="Nenhum jogo na lista."
-        note="lido do Notion · revalida a cada 5 min"
-      >
-        {playing.map((game) => (
-          <GameRow key={game.id} game={game} />
-        ))}
-        {finished.length > 0 ? (
-          <GroupLabel>✔ zerados ({finished.length})</GroupLabel>
-        ) : null}
-        {finished.map((game) => (
-          <GameRow key={game.id} game={game} />
-        ))}
-      </MediaList>
-    </div>
-  );
+export default async function JogosIndex() {
+  const [latest] = await getYears("jogos");
+  if (!latest) {
+    return (
+      <div className="mx-auto mt-24 w-[40rem] max-w-full rounded-lg border-2 border-orange bg-bg-alt p-6">
+        <h1 className="text-xl font-bold text-orange">Nenhuma tabela de jogos encontrada</h1>
+        <p className="mt-2 text-sm text-fg/70">
+          Crie uma tabela chamada, por exemplo, <code>2027 - Jogos</code> no Notion e
+          compartilhe com a integração. Ela aparece aqui sozinha.
+        </p>
+      </div>
+    );
+  }
+  redirect(`/jogos/${latest}`);
 }
