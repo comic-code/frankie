@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Paleta do Frankie — extraída de frankie-web/src/styles/global.js (1:1). */
+@theme {
+  --color-bg: #282a36;
+  --color-bg-alt: #151515;
+  --color-fg: #fefefe;
+  --color-orange: #fb3700;
+  --color-orange-alt: #fb6900;
+  --color-green: #00b98d;
+  --color-green-2: #007e80;
+  --color-green-alt: #79c3aa;
+  --color-pink: #f88f89;
+  --color-yellow: #eec276;
+  --color-yellow-alt: #fbf6d0;
+
+  /* Cores NOVAS: o Notion usa 10 cores nos gêneros e a paleta só tinha 5.
+     Estas 5 são escolha minha (harmônicas com o fundo Dracula) — revisar. */
+  --color-notion-blue: #7fb2ff;
+  --color-notion-purple: #bd93f9;
+  --color-notion-brown: #c49a6c;
+  --color-notion-gray: #8a8f98;
+  --color-notion-red: #ff6b6b;
+
+  --font-mono: var(--font-kode-mono), ui-monospace, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    color-scheme: dark;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-mono);
+  }
+
+  /* Scrollbar no tom do tema, senão a lista longa fica com barra clara demais */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0003;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-orange-alt);
+    border-radius: 9999px;
+    border: 2px solid var(--color-bg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* animations do app antigo (global.js), mesmos nomes e tempos */
+@keyframes forwardLeft {
+  0% {
+    transform: scaleX(0);
+    transform-origin: 0% 0%;
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.anim-forward-left {
+  animation: forwardLeft 0.25s ease 0s 1 normal forwards;
+}
+
+.anim-fade {
+  animation: fade 0.25s ease 0s 1 normal forwards;
 }
